@@ -1,0 +1,39 @@
+[
+    {
+        "Index": 9999999999,    // This is sample
+        "AniDuraition": 1500,   // 애니메이션 타임
+        "CoolTime": 1000,       // 쿨타임
+        "TriggerCondition": {
+            "TriggerType": "Base",  //OnBaseSkill, OnHit, OnSkill
+            "TriggerValue": 1       //OnBaseSkill을 몇 번 사용해야 발동하는지 등 
+        },
+        "Operation": [
+            {
+                "ExecuteTime": 400,
+                "Type": "Damage",
+                "Target": "EnemyWithinRange", //EnemyWithinRange, GuardianWithinRange, EnemyRandom, GuardianRandom
+                "TargetNumber": 1,
+                "Range": 200
+            }
+        ]
+    },
+    {
+        "Index": 1, // 기본 평타 구현
+        "AniDuraition": 1500,
+        "CoolTime": 1000,
+        "TriggerCondition": {
+            "TriggerType": "None",
+            "TriggerValue": 1
+        },
+        "Operation": [
+            {
+                "ExecuteTime": 400,
+                "Type": "PhysicalDamage",
+                "Value": 100,
+                "Target": "EnemyInRange", //EnemyWithinRange, GuardianWithinRange, EnemyRandom, GuardianRandom
+                "TargetNumber": 1,
+                "Range": 200
+            }
+        ]
+    }
+]

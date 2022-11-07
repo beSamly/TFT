@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl">
+      <UniqueIdentifier>{50eb5868-56e7-4a97-8540-db2092140efc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl\PacketHandler">
+      <UniqueIdentifier>{a5d79e22-71bf-457b-8413-4414e6ee9a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl\PacketHandler\Auth">
+      <UniqueIdentifier>{4a8487e6-bb9d-40cd-855f-0b3955c9967a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl\PacketHandler\Interface">
+      <UniqueIdentifier>{1d8e92e8-6427-4247-88a5-c066a5e76b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{028feb9f-edd0-4016-b652-dbee5c5321ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl\PacketHandler\Common">
+      <UniqueIdentifier>{1f1201b5-989d-4815-9af3-8ebbebc1a78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB">
+      <UniqueIdentifier>{7b6e4c26-1fce-4ba8-9f0e-f66fdd827bee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB\Model">
+      <UniqueIdentifier>{83d02aad-49f9-4448-9c95-2f3e82292e74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB\Connection">
+      <UniqueIdentifier>{48da7653-5c7e-4357-9502-25713867d641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB\BaseModel">
+      <UniqueIdentifier>{8800a7a7-2110-49d7-aad5-1ebcdc9c36dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB\ModelInfo">
+      <UniqueIdentifier>{b5418ef8-000a-4d6b-b397-242e74b86e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{a97dda10-70a5-4135-9dac-8168156654ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetworkImpl\PacketHandler\EquipItem">
+      <UniqueIdentifier>{4966984d-2252-4d9d-bab8-7985a09e2f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Job">
+      <UniqueIdentifier>{b2e736c4-263c-4f4c-ae37-0c91ec4d02fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Thread">
+      <UniqueIdentifier>{5885a67c-5cf9-403d-8cec-723067a32f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DB\Helper">
+      <UniqueIdentifier>{80f85764-e56c-412e-b2e5-fc980248c6ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem">
+      <UniqueIdentifier>{eab69f76-a0db-4c00-84d1-7d25aaebeef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Common">
+      <UniqueIdentifier>{c49567f8-44c0-4c07-bb08-f5eb3f89e463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Constant">
+      <UniqueIdentifier>{32bff28f-e251-4b5a-8709-1a40a13c46b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Guardian">
+      <UniqueIdentifier>{162a5451-1530-4143-afe7-d1bf3b9504cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameObject">
+      <UniqueIdentifier>{81ce51be-9ab3-4434-90ea-4a8dc91dcf1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameObject\Entity">
+      <UniqueIdentifier>{e60ab7d0-43e8-434d-9a3b-6d997ec4d007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameObject\Operation">
+      <UniqueIdentifier>{ec49f76b-5995-49e4-9dfc-24dff88597a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameObject\Skill">
+      <UniqueIdentifier>{058034eb-c717-41b5-8a49-26d1ad44a274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Factory">
+      <UniqueIdentifier>{caa024b8-200b-44dd-803d-89c531038572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\json">
+      <UniqueIdentifier>{da246980-ac7c-4499-a77f-6e1a6147b08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameObject\Type">
+      <UniqueIdentifier>{76eee370-487b-4cdd-942d-52be62cc67ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Factory\Operation">
+      <UniqueIdentifier>{afccea7a-31d9-4894-ad01-44b0d1c2fbcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Factory\TriggerCondition">
+      <UniqueIdentifier>{2e6d9940-5899-4bc3-8741-ac20626be385}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketServer.cpp">
+      <Filter>Source Files\NetworkImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSession.cpp">
+      <Filter>Source Files\NetworkImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Auth</Filter>
+    </ClCompile>
+    <ClCompile Include="IPacketHandler.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketId.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="Collection.cpp">
+      <Filter>Source Files\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipItem.cpp">
+      <Filter>Source Files\DB\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConnection.cpp">
+      <Filter>Source Files\DB\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConnectionPool.cpp">
+      <Filter>Source Files\DB\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="DBModel.cpp">
+      <Filter>Source Files\DB\BaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Column.cpp">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="ColumnDataType.cpp">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketManager.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyEquipItem.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakEquipItem.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="JobQueue.cpp">
+      <Filter>Source Files\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="JobTimer.cpp">
+      <Filter>Source Files\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalJobQueue.cpp">
+      <Filter>Source Files\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Job.cpp">
+      <Filter>Source Files\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Scheduler.cpp">
+      <Filter>Source Files\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Source Files\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="TLS.cpp">
+      <Filter>Source Files\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="DBQueryHelper.cpp">
+      <Filter>Source Files\DB\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeEquipItem.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClCompile>
+    <ClCompile Include="InputValidator.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Source Files\DB\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="TableSchema.cpp">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem.cpp">
+      <Filter>Source Files\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorPos.cpp">
+      <Filter>Source Files\GameSystem\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtil.cpp">
+      <Filter>Source Files\GameSystem\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="GameHost.cpp">
+      <Filter>Source Files\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Guardian.cpp">
+      <Filter>Source Files\GameSystem\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>Source Files\GameSystem\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\GameSystem\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files\GameSystem\Guardian</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleEntity.cpp">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveEntity.cpp">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillData.cpp">
+      <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="StatEntity.cpp">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillDataFactory.cpp">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="GuardianFactory.cpp">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationFactory.cpp">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalDamage.cpp">
+      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="IOperation.cpp">
+      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="ITriggerCondition.cpp">
+      <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
+    </ClCompile>
+    <ClCompile Include="TCNone.cpp">
+      <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggerConditionFactory.cpp">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketServer.h">
+      <Filter>Source Files\NetworkImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSession.h">
+      <Filter>Source Files\NetworkImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Auth</Filter>
+    </ClInclude>
+    <ClInclude Include="IPacketHandler.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVar.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketId.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="Collection.h">
+      <Filter>Source Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipItem.h">
+      <Filter>Source Files\DB\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnection.h">
+      <Filter>Source Files\DB\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnectionPool.h">
+      <Filter>Source Files\DB\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="DBModel.h">
+      <Filter>Source Files\DB\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Column.h">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="ColumnDataType.h">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketManager.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyEquipItem.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakEquipItem.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="JobQueue.h">
+      <Filter>Source Files\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="JobTimer.h">
+      <Filter>Source Files\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalJobQueue.h">
+      <Filter>Source Files\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job.h">
+      <Filter>Source Files\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Scheduler.h">
+      <Filter>Source Files\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Source Files\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TLS.h">
+      <Filter>Source Files\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="DBQueryHelper.h">
+      <Filter>Source Files\DB\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeEquipItem.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
+    </ClInclude>
+    <ClInclude Include="InputValidator.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Source Files\DB\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="TableSchema.h">
+      <Filter>Source Files\DB\ModelInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem.h">
+      <Filter>Source Files\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorPos.h">
+      <Filter>Source Files\GameSystem\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>Source Files\GameSystem\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHost.h">
+      <Filter>Source Files\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Guardian.h">
+      <Filter>Source Files\GameSystem\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>Source Files\GameSystem\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files\GameSystem\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Source Files\GameSystem\Guardian</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleEntity.h">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveEntity.h">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillData.h">
+      <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonEnum.h">
+      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="StatEntity.h">
+      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillDataFactory.h">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="OperationType.h">
+      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerType.h">
+      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="StatType.h">
+      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetType.h">
+      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="GuardianFactory.h">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationFactory.h">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalDamage.h">
+      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperation.h">
+      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="ITriggerCondition.h">
+      <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
+    </ClInclude>
+    <ClInclude Include="TCNone.h">
+      <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerConditionFactory.h">
+      <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SocketServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="json1.bin" />
+    <None Include="json\SkillData.json">
+      <Filter>Source Files\GameSystem\json</Filter>
+    </None>
+    <None Include="json\OperationData.json">
+      <Filter>Source Files\GameSystem\json</Filter>
+    </None>
+    <None Include="json\GuardianData.json">
+      <Filter>Source Files\GameSystem\json</Filter>
+    </None>
+    <None Include="json\EntityData.json">
+      <Filter>Source Files\GameSystem\json</Filter>
+    </None>
+    <None Include="json\StatData.json">
+      <Filter>Source Files\GameSystem\json</Filter>
+    </None>
+  </ItemGroup>
+</Project>
