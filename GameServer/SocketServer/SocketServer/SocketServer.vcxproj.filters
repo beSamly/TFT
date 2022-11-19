@@ -23,35 +23,11 @@
     <Filter Include="Source Files\NetworkImpl\PacketHandler\Common">
       <UniqueIdentifier>{1f1201b5-989d-4815-9af3-8ebbebc1a78e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DB">
-      <UniqueIdentifier>{7b6e4c26-1fce-4ba8-9f0e-f66fdd827bee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\Model">
-      <UniqueIdentifier>{83d02aad-49f9-4448-9c95-2f3e82292e74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\Connection">
-      <UniqueIdentifier>{48da7653-5c7e-4357-9502-25713867d641}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\BaseModel">
-      <UniqueIdentifier>{8800a7a7-2110-49d7-aad5-1ebcdc9c36dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\ModelInfo">
-      <UniqueIdentifier>{b5418ef8-000a-4d6b-b397-242e74b86e90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{a97dda10-70a5-4135-9dac-8168156654ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\NetworkImpl\PacketHandler\EquipItem">
-      <UniqueIdentifier>{4966984d-2252-4d9d-bab8-7985a09e2f48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Job">
-      <UniqueIdentifier>{b2e736c4-263c-4f4c-ae37-0c91ec4d02fb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Thread">
       <UniqueIdentifier>{5885a67c-5cf9-403d-8cec-723067a32f5a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\Helper">
-      <UniqueIdentifier>{80f85764-e56c-412e-b2e5-fc980248c6ca}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\GameSystem">
       <UniqueIdentifier>{eab69f76-a0db-4c00-84d1-7d25aaebeef4}</UniqueIdentifier>
@@ -112,62 +88,14 @@
     <ClCompile Include="IPacketHandler.cpp">
       <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="GlobalVar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PacketId.cpp">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\DB</Filter>
-    </ClCompile>
-    <ClCompile Include="Collection.cpp">
-      <Filter>Source Files\DB</Filter>
-    </ClCompile>
-    <ClCompile Include="EquipItem.cpp">
-      <Filter>Source Files\DB\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="DBConnection.cpp">
-      <Filter>Source Files\DB\Connection</Filter>
-    </ClCompile>
-    <ClCompile Include="DBConnectionPool.cpp">
-      <Filter>Source Files\DB\Connection</Filter>
-    </ClCompile>
-    <ClCompile Include="DBModel.cpp">
-      <Filter>Source Files\DB\BaseModel</Filter>
-    </ClCompile>
-    <ClCompile Include="Column.cpp">
-      <Filter>Source Files\DB\ModelInfo</Filter>
-    </ClCompile>
-    <ClCompile Include="ColumnDataType.cpp">
-      <Filter>Source Files\DB\ModelInfo</Filter>
-    </ClCompile>
-    <ClCompile Include="PacketManager.cpp">
+    <ClCompile Include="PacketController.cpp">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="BuyEquipItem.cpp">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
-    </ClCompile>
-    <ClCompile Include="BreakEquipItem.cpp">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
     </ClCompile>
     <ClCompile Include="PlayerManager.cpp">
       <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="JobQueue.cpp">
-      <Filter>Source Files\Job</Filter>
-    </ClCompile>
-    <ClCompile Include="JobTimer.cpp">
-      <Filter>Source Files\Job</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalJobQueue.cpp">
-      <Filter>Source Files\Job</Filter>
-    </ClCompile>
-    <ClCompile Include="Job.cpp">
-      <Filter>Source Files\Job</Filter>
-    </ClCompile>
-    <ClCompile Include="Scheduler.cpp">
-      <Filter>Source Files\Job</Filter>
     </ClCompile>
     <ClCompile Include="ThreadManager.cpp">
       <Filter>Source Files\Thread</Filter>
@@ -175,20 +103,8 @@
     <ClCompile Include="TLS.cpp">
       <Filter>Source Files\Thread</Filter>
     </ClCompile>
-    <ClCompile Include="DBQueryHelper.cpp">
-      <Filter>Source Files\DB\Helper</Filter>
-    </ClCompile>
-    <ClCompile Include="UpgradeEquipItem.cpp">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
-    </ClCompile>
     <ClCompile Include="InputValidator.cpp">
       <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Account.cpp">
-      <Filter>Source Files\DB\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="TableSchema.cpp">
-      <Filter>Source Files\DB\ModelInfo</Filter>
     </ClCompile>
     <ClCompile Include="GameSystem.cpp">
       <Filter>Source Files\GameSystem</Filter>
@@ -253,6 +169,12 @@
     <ClCompile Include="TriggerConditionFactory.cpp">
       <Filter>Source Files\GameSystem\Factory</Filter>
     </ClCompile>
+    <ClCompile Include="ServerSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -270,62 +192,14 @@
     <ClInclude Include="IPacketHandler.h">
       <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalVar.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="PacketId.h">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files\DB</Filter>
-    </ClInclude>
-    <ClInclude Include="Collection.h">
-      <Filter>Source Files\DB</Filter>
-    </ClInclude>
-    <ClInclude Include="EquipItem.h">
-      <Filter>Source Files\DB\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="DBConnection.h">
-      <Filter>Source Files\DB\Connection</Filter>
-    </ClInclude>
-    <ClInclude Include="DBConnectionPool.h">
-      <Filter>Source Files\DB\Connection</Filter>
-    </ClInclude>
-    <ClInclude Include="DBModel.h">
-      <Filter>Source Files\DB\BaseModel</Filter>
-    </ClInclude>
-    <ClInclude Include="Column.h">
-      <Filter>Source Files\DB\ModelInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="ColumnDataType.h">
-      <Filter>Source Files\DB\ModelInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketManager.h">
+    <ClInclude Include="PacketController.h">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyEquipItem.h">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
-    </ClInclude>
-    <ClInclude Include="BreakEquipItem.h">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
     </ClInclude>
     <ClInclude Include="PlayerManager.h">
       <Filter>Source Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="JobQueue.h">
-      <Filter>Source Files\Job</Filter>
-    </ClInclude>
-    <ClInclude Include="JobTimer.h">
-      <Filter>Source Files\Job</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalJobQueue.h">
-      <Filter>Source Files\Job</Filter>
-    </ClInclude>
-    <ClInclude Include="Job.h">
-      <Filter>Source Files\Job</Filter>
-    </ClInclude>
-    <ClInclude Include="Scheduler.h">
-      <Filter>Source Files\Job</Filter>
     </ClInclude>
     <ClInclude Include="ThreadManager.h">
       <Filter>Source Files\Thread</Filter>
@@ -333,20 +207,8 @@
     <ClInclude Include="TLS.h">
       <Filter>Source Files\Thread</Filter>
     </ClInclude>
-    <ClInclude Include="DBQueryHelper.h">
-      <Filter>Source Files\DB\Helper</Filter>
-    </ClInclude>
-    <ClInclude Include="UpgradeEquipItem.h">
-      <Filter>Source Files\NetworkImpl\PacketHandler\EquipItem</Filter>
-    </ClInclude>
     <ClInclude Include="InputValidator.h">
       <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Account.h">
-      <Filter>Source Files\DB\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="TableSchema.h">
-      <Filter>Source Files\DB\ModelInfo</Filter>
     </ClInclude>
     <ClInclude Include="GameSystem.h">
       <Filter>Source Files\GameSystem</Filter>
@@ -426,6 +288,12 @@
     </ClInclude>
     <ClInclude Include="TriggerConditionFactory.h">
       <Filter>Source Files\GameSystem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSystem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

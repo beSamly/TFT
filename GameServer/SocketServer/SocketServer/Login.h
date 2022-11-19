@@ -7,12 +7,12 @@ namespace PacketHandler {
 	public:
 		bool RequireLogin() override { return false; };
 
-		bool Validate(ClientSessionRef& session, BYTE* buffer, int32 len) override;
+		bool Validate(sptr<ClientSession>& session, BYTE* buffer, int32 len) override;
 
-		void HandlePacket(ClientSessionRef& session, BYTE* buffer, int32 len) override;
+		void HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) override;
 
 	private:
-		void HandleFail(ClientSessionRef& session, string reason);
+		void HandleFail(sptr<ClientSession>& session, string reason);
 	};
 }
 

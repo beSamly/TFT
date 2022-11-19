@@ -1,26 +1,27 @@
 #pragma once
 #include "Session.h"
-#include "LoginResponse.pb.h"
 
 /*-----------------
 	ClientSession
 ------------------*/
 class Player;
 using PlayerRef = std::shared_ptr<Player>;
+using std::shared_ptr;
+using std::function;
 
 class ClientSession : public Session
 {
 public:
 	ClientSession();
 	virtual ~ClientSession();
-	std::shared_ptr<ClientSession> GetClientSessionRef();
+	shared_ptr<ClientSession> GetClientSessionRef();
+	function<void(shared_ptr<ClientSession>, BYTE*, int32)> OnRecvCallback;
 
 public:
 	PlayerRef _player = nullptr;
 public:
 	PlayerRef		GetPlayer();
 	void			SetPlayer(PlayerRef player);
-
 
 private:
 	/* 인터페이스 구현 */
@@ -34,6 +35,6 @@ private:
 
 public:
 	/* 컨텐츠 로직 */
-	void SendLoginResponse(Protocol::LoginResponse pkt);
+	//void SendLoginResponse(Protocol::LoginResponse pkt);
 
 };

@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Player.h"
-#include "Scheduler.h"
-
-class PlayerManager : public Scheduler
+class PlayerManager 
 {
 public:
 	PlayerManager();

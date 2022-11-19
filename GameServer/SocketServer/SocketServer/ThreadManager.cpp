@@ -1,9 +1,6 @@
 #include "pch.h"
 #include "ThreadManager.h"
 #include "TLS.h"
-#include "GlobalJobQueue.h"
-#include "Job.h"
-#include "JobTimer.h"
 
 /*------------------
 	ThreadManager
@@ -61,11 +58,11 @@ void ThreadManager::DoGlobalQueueWork()
 		if (now > LEndTickCount)
 			break;
 
-		JobRef jobRef = GGlobalJobQueue->Pop();
-		if (jobRef == nullptr)
+		//JobRef jobRef = GGlobalJobQueue->Pop();
+		/*if (jobRef == nullptr)
 			break;
 
-		jobRef->Execute();
+		jobRef->Execute();*/
 	}
 }
 
@@ -73,5 +70,5 @@ void ThreadManager::DistributeReservedJobs()
 {
 	const uint64 now = ::GetTickCount64();
 
-	GJobTimer->Execute(now);
+	//GJobTimer->Execute(now);
 }

@@ -11,9 +11,9 @@ void BattleEntity::Update(float deltaTime)
 		bool canAttack = IsWithinAttackRange(enemy);
 		if (canAttack) {
 			if (IsCoolTime()) {
-				Log->Info("yes can attack");
+				//Log->Info("yes can attack");
 			}
- 			Log->Info("yes can attack");
+ 			//Log->Info("yes can attack");
 		}
 	}
 }

@@ -30,7 +30,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "EquipItem.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_LoginResponse_2eproto
@@ -178,28 +177,9 @@ class LoginResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kEquipItemsFieldNumber = 3,
     kMessageFieldNumber = 2,
     kResultFieldNumber = 1,
   };
-  // repeated .Protocol.EquipItem EquipItems = 3;
-  int equipitems_size() const;
-  private:
-  int _internal_equipitems_size() const;
-  public:
-  void clear_equipitems();
-  ::Protocol::EquipItem* mutable_equipitems(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Protocol::EquipItem >*
-      mutable_equipitems();
-  private:
-  const ::Protocol::EquipItem& _internal_equipitems(int index) const;
-  ::Protocol::EquipItem* _internal_add_equipitems();
-  public:
-  const ::Protocol::EquipItem& equipitems(int index) const;
-  ::Protocol::EquipItem* add_equipitems();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Protocol::EquipItem >&
-      equipitems() const;
-
   // string message = 2;
   void clear_message();
   const std::string& message() const;
@@ -231,7 +211,6 @@ class LoginResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Protocol::EquipItem > equipitems_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
     bool result_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -318,43 +297,6 @@ inline void LoginResponse::set_allocated_message(std::string* message) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:Protocol.LoginResponse.message)
-}
-
-// repeated .Protocol.EquipItem EquipItems = 3;
-inline int LoginResponse::_internal_equipitems_size() const {
-  return _impl_.equipitems_.size();
-}
-inline int LoginResponse::equipitems_size() const {
-  return _internal_equipitems_size();
-}
-inline ::Protocol::EquipItem* LoginResponse::mutable_equipitems(int index) {
-  // @@protoc_insertion_point(field_mutable:Protocol.LoginResponse.EquipItems)
-  return _impl_.equipitems_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Protocol::EquipItem >*
-LoginResponse::mutable_equipitems() {
-  // @@protoc_insertion_point(field_mutable_list:Protocol.LoginResponse.EquipItems)
-  return &_impl_.equipitems_;
-}
-inline const ::Protocol::EquipItem& LoginResponse::_internal_equipitems(int index) const {
-  return _impl_.equipitems_.Get(index);
-}
-inline const ::Protocol::EquipItem& LoginResponse::equipitems(int index) const {
-  // @@protoc_insertion_point(field_get:Protocol.LoginResponse.EquipItems)
-  return _internal_equipitems(index);
-}
-inline ::Protocol::EquipItem* LoginResponse::_internal_add_equipitems() {
-  return _impl_.equipitems_.Add();
-}
-inline ::Protocol::EquipItem* LoginResponse::add_equipitems() {
-  ::Protocol::EquipItem* _add = _internal_add_equipitems();
-  // @@protoc_insertion_point(field_add:Protocol.LoginResponse.EquipItems)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Protocol::EquipItem >&
-LoginResponse::equipitems() const {
-  // @@protoc_insertion_point(field_list:Protocol.LoginResponse.EquipItems)
-  return _impl_.equipitems_;
 }
 
 #ifdef __GNUC__

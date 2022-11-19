@@ -1,7 +1,7 @@
 #pragma once
 class OperationFactory
 {
-private:
+public:
 	OperationFactory();
 };
 

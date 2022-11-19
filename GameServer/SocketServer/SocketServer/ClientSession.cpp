@@ -1,9 +1,7 @@
 #include "pch.h"
 #include "ClientSession.h"
-#include "PacketManager.h"
 #include "PacketHeader.h"
 #include "PacketId.h"
-#include "LoginResponse.pb.h"
 
 ClientSession::ClientSession()
 {
@@ -57,10 +55,11 @@ void ClientSession::OnDisconnected()
 
 void ClientSession::OnRecvPacket(BYTE* buffer, int32 len)
 {
-	PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
+	// 아래 과정을 server system 에서 하자
+	/*PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 	auto packetId = header->id;
-	auto session = this->GetClientSessionRef();
-	GPacketManager->HandlePacket(session, packetId, buffer, len);
+	auto session = this->GetClientSessionRef();*/
+	OnRecvCallback(this->GetClientSessionRef(), buffer, len);
 }
 
 void ClientSession::OnSend(int32 len)
@@ -77,8 +76,4 @@ void ClientSession::SetPlayer(PlayerRef player)
 	_player = player;
 }
 
-void ClientSession::SendLoginResponse(Protocol::LoginResponse pkt)
-{
-	SendBufferRef buffer = PacketManager::PacketToSendBuffer(pkt, PacketId::LOGIN_RES);
-	this->Send(buffer);
-}
+

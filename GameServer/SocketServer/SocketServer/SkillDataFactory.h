@@ -5,9 +5,10 @@
 
 class SkillDataFactory
 {
+public:
+	SkillDataFactory() { Init(); };
 
 private:
-	SkillDataFactory() { Init(); };
 	void Init();
 	std::map<int, SkillData> skillDataMap;
 

@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package Protocol;
-
-message UpgradeEquipItem{
-	uint64 SlotIndex = 1;
-}

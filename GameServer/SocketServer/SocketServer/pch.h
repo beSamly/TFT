@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include <string>
-#include <format>
 #include <functional>
 #include <concepts>
 #include <regex>
@@ -27,37 +26,44 @@
 
 
 #include "TLS.h"
-#include "GlobalVar.h"
 #include "GlobalPch.h"
 #include "ClientSession.h"
 #include "SocketServer.h"
-#include "Logger.h"
-#include "Column.h"
-#include "Collection.h"
 #include "OperationType.h"
 #include "TriggerType.h"
 #include "TargetType.h"
 
-using std::format;
 using std::list;
 using std::shared_ptr;
 using std::function;
 using std::vector;
 using std::make_pair;
+using std::function;
+using std::make_shared;
+using std::make_unique;
+
 using SocketServerRef = std::shared_ptr<class SocketServer>;
 using ClientSessionRef = std::shared_ptr<class ClientSession>;
-using ColumnRef = std::shared_ptr<class Column>;
-using JobQueueRef = std::shared_ptr<class JobQueue>;
-using JobRef = std::shared_ptr<class Job>;
-using JobDataRef = std::shared_ptr<class JobData>;
-using CallbackType = std::function<void()>;
+//using ColumnRef = std::shared_ptr<class Column>;
+//using JobQueueRef = std::shared_ptr<class JobQueue>;
+//using JobRef = std::shared_ptr<class Job>;
+//using JobDataRef = std::shared_ptr<class JobData>;
+//using CallbackType = std::function<void()>;
 
 template<typename T>
-using CollectionRef = std::shared_ptr<class Collection<T>>;
-using EquipItemRef = std::shared_ptr<class EquipItem>;
+using sptr = std::shared_ptr<T>;
 
-using PlayerRef = std::shared_ptr<class Player>;
-using AccountRef = std::shared_ptr<class Account>;
-using DBConnectionGaurdRef = std::shared_ptr<class DBConnectionGaurd>;
+template<typename T>
+using uptr = std::unique_ptr<T>;
+
+template<typename T>
+using wptr = std::weak_ptr<T>;
+
+//template<typename T>
+//using EquipItemRef = std::shared_ptr<class EquipItem>;
+//
+//using PlayerRef = std::shared_ptr<class Player>;
+//using AccountRef = std::shared_ptr<class Account>;
+//using DBConnectionGaurdRef = std::shared_ptr<class DBConnectionGaurd>;
 
 //게임플레이 관련

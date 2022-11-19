@@ -3,6 +3,7 @@
 #include "BaseSocketServer.h"
 
 using SessionFactory = std::function<SessionRef(void)>;
+using std::shared_ptr;
 
 class SocketServer : public BaseSocketServer
 {
@@ -17,6 +18,7 @@ private:
 public:
 	SocketServer(NetAddress netAddress, int32 maxSessionCount) : BaseSocketServer(maxSessionCount, netAddress) {
 	};
+	std::function<void(shared_ptr<ClientSession>, BYTE*, int32)> OnClientRecv;
 
 public:
 	bool	Start();

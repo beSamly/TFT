@@ -2,12 +2,13 @@
 #include "pch.h"
 #include <functional>
 #include "ClientSession.h"
+#include "spdlog/spdlog.h"
 
 bool SocketServer::Start()
 {
 	if (StartAccept() == false)
 		return false;
-	Log->Info("Server started");
+
 	return true;
 }
 
@@ -39,7 +40,7 @@ SessionRef SocketServer::CreateSession()
 	auto session = MakeShared<ClientSession>();
 	
 	session->SetOwner(std::static_pointer_cast<BaseSocketServer>(shared_from_this()));
-
+	session->OnRecvCallback = OnClientRecv;
 	if (_iocpCore->Register(session) == false)
 		return nullptr;
 
@@ -49,13 +50,13 @@ SessionRef SocketServer::CreateSession()
 // BaseSocketServer에서 ProcessAccept() 호출 시에 이벤트 발생
 void SocketServer::OnConnected(SessionRef session)
 {
-	Log->Info("Session connected");
+	spdlog::debug("Session connected");
 	AddSession(session);
 }
 
 // Session 에서 ProcessDisconnect() 호출 시에 이벤트 발생
 void SocketServer::OnDisconnected(SessionRef session)
 {
-	Log->Info("Session disconnected");
+	spdlog::debug("Session disconnected");
 	ReleaseSession(session);
 }
