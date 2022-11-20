@@ -11,8 +11,11 @@ namespace Network
     {
         private byte[] buffer;
         private int packetId;
-        public Packet(int id)
+        private int prefix;
+
+        public Packet(int pfix, int id)
         {
+            prefix = pfix;
             packetId = id;
         }
 
@@ -21,10 +24,12 @@ namespace Network
             PacketHeader header;
             header.size = (UInt16)0;
             header.id = (UInt16)0;
+            header.prefix = (UInt16)0;
 
             UInt16 headerLength = (UInt16)Marshal.SizeOf(header);
             UInt16 dataLength = (UInt16)data.Length;
             header.id = (UInt16)packetId;
+            header.prefix = (UInt16)prefix;
             header.size = (UInt16)(headerLength + dataLength);
 
             byte[] byteHeader = new byte[headerLength];

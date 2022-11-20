@@ -175,6 +175,15 @@
     <ClCompile Include="Packet.cpp">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
     </ClCompile>
+    <ClCompile Include="MatchController.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="IController.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthController.cpp">
+      <Filter>Source Files\NetworkImpl\PacketHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -294,6 +303,15 @@
     </ClInclude>
     <ClInclude Include="Packet.h">
       <Filter>Source Files\NetworkImpl\PacketHandler\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchController.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="IController.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthController.h">
+      <Filter>Source Files\NetworkImpl\PacketHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

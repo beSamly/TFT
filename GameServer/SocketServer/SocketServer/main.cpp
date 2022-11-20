@@ -12,14 +12,10 @@ int32 MAX_SESSION_COUNT = 100;
 
 int main() {
 
-
 	uptr<ServerSystem> server_system = std::make_unique<ServerSystem>();
 
 	server_system->Init();
 	server_system->StartSocketServer();
-
-
-	
 
 	return 0;
 }

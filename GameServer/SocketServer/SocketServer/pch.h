@@ -41,6 +41,9 @@ using std::make_pair;
 using std::function;
 using std::make_shared;
 using std::make_unique;
+using std::string;
+using std::map;
+using std::make_pair;
 
 using SocketServerRef = std::shared_ptr<class SocketServer>;
 using ClientSessionRef = std::shared_ptr<class ClientSession>;

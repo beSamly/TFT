@@ -4,6 +4,8 @@
 #include "PacketId.h"
 #include "Login.h"
 #include "spdlog/spdlog.h"
+#include "MatchController.h"
+#include "AuthController.h"
 
 PacketController::PacketController()
 {
@@ -15,34 +17,21 @@ PacketController::~PacketController()
 }
 
 void PacketController::Init() {
-	_handlers = Vector<IPacketHandler*>(UINT16_MAX, nullptr);
-	_handlers[PacketId::LOGIN_REQ] = dynamic_cast<IPacketHandler*>(new PacketHandler::Login());
-
+	controllerMap.emplace((int)PacketId::Prefix::AUTH, make_shared<AuthController>());
+	controllerMap.emplace((int)PacketId::Prefix::MATCH, make_shared<MatchController>());
 }
 
 void PacketController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) {
 
 	PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
-	auto packetId = header->id;
+	auto prefix = header->prefix;
 
-	IPacketHandler* packetHandler = _handlers[packetId];
+	sptr<IController> controller = controllerMap[prefix];
 
-	if (packetHandler == nullptr) {
-		spdlog::error("[PacketController] invalid packetId = {}", packetId);
-		return;
+	if (controller) {
+		controller->HandlePacket(session, buffer, len);
 	}
-
-	bool requireLogin = packetHandler->RequireLogin();
-	if (requireLogin && session->GetPlayer() == nullptr) {
-		//Log->Debug(format("[PacketController] invalid packetId = {}", packetId));
-		return;
+	else {
+		spdlog::error("[PacketController] invalid prefix = {}", prefix);
 	}
-
-	// 패킷 유효성 검증은 일단 끄기
-	/*if (!packetHandler->Validate(session, buffer, len)) {
-		spdlog::debug("[PacketController] validation failed for packetId = {}", packetId);
-		return;
-	}*/
-
-	_handlers[packetId]->HandlePacket(session, buffer, len);
 }

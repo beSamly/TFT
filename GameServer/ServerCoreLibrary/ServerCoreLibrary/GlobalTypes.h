@@ -10,6 +10,7 @@
 #include <set>
 #include <map>
 #include <stack>
+#include <functional>
 
 using BYTE = unsigned char;
 using int8 = __int8;
@@ -53,6 +54,7 @@ using std::wstring;
 using std::make_shared;
 using std::this_thread::sleep_for;
 using std::string;
+using std::function;
 using String = std::wstring;
 
 template<typename type, typename... Args>

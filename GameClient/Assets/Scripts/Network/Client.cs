@@ -9,20 +9,16 @@ namespace Network
 {
     public class Client
     {
-   
         public TCP tcp;
-
-        private Action<byte[], int> OnRecvCallback;
      
         public void Init()
         {
             tcp = new TCP();
-            tcp.OnRecv(this.OnRecvCallback);
         }
 
-        public void OnRecv(Action<byte[], int> OnRecvCallback)
+        public void OnRecv(Action<byte[]> callback)
         {
-            this.OnRecvCallback = OnRecvCallback; 
+            tcp.OnRecv(callback);
         }
 
         public void ConnectToServer(string address, int port)
@@ -43,8 +39,8 @@ namespace Network
 
             private NetworkStream stream;
             private byte[] receiveBuffer;
-            private Action<byte[], int> OnRecvCallback;
-            public void OnRecv(Action<byte[], int> OnRecvCallback)
+            private Action<byte[]> OnRecvCallback;
+            public void OnRecv(Action<byte[]> OnRecvCallback)
             {
                 this.OnRecvCallback = OnRecvCallback;
             }
@@ -119,7 +115,7 @@ namespace Network
                 int _packetLength = 0;
                
                 //TODO 여기 callback으로 바꾸기
-                this.OnRecvCallback(_data, _data.Length);
+                this.OnRecvCallback(_data);
                 return true;
             }
         }

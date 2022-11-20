@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 namespace Network
 {
@@ -14,6 +15,7 @@ namespace Network
         public PacketController()
         {
             packetHandler.Add((int)PacketId.LOGIN_RES, HandleLoginRes);
+            packetHandler.Add((int)PacketId.AI_MATCH_RES, HandleAiMatchRes);
         }
 
         private Dictionary<int, Action<byte[]>> packetHandler = new Dictionary<int, Action<byte[]>>();
@@ -43,7 +45,8 @@ namespace Network
             if (packetHandler.ContainsKey(header.id))
             {
                 packetHandler[header.id].Invoke(data);
-            } else
+            }
+            else
             {
                 //log error
             }
@@ -52,14 +55,31 @@ namespace Network
         private void HandleLoginRes(byte[] data)
         {
             MessageParser<LoginResponse> parser = LoginResponse.Parser;
-            LoginResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize );
-            if(response.Result == true)
+            LoginResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize);
+            if (response.Result == true)
             {
-                //move to next scene
-            } else
+                //TODO : move to next lobby
+                SceneManager.LoadScene("Lobby");
+            }
+            else
             {
                 //error
             }
         }
+
+        private void HandleAiMatchRes(byte[] data)
+        {
+            MessageParser<AiMatchResponse> parser = AiMatchResponse.Parser;
+            AiMatchResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize);
+            if (response.Result == true)
+            {
+                SceneManager.LoadScene("Game");
+            }
+        }
+    }
+
+    public class AuthController
+    {
+
     }
 }

@@ -3,11 +3,16 @@
 #include "ClientSession.h"
 #include "PacketHeader.h"
 #include "SendBuffer.h"
+#include "IController.h"
+
+
+using std::map;
+using std::function;
 
 class PacketController
 {
 private:
-	std::vector<IPacketHandler*> _handlers;
+	std::map<int, sptr<IController>> controllerMap;
 
 public:
 	PacketController();

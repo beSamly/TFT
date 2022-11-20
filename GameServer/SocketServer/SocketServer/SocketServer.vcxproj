@@ -159,10 +159,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AuthController.cpp" />
     <ClCompile Include="BattleEntity.cpp" />
     <ClCompile Include="ClientSession.cpp" />
     <ClCompile Include="GuardianFactory.cpp" />
+    <ClCompile Include="IController.cpp" />
     <ClCompile Include="ITriggerCondition.cpp" />
+    <ClCompile Include="MatchController.cpp" />
     <ClCompile Include="MoveEntity.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameHost.cpp" />
@@ -201,11 +204,14 @@
     <ClCompile Include="VectorPos.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AuthController.h" />
     <ClInclude Include="BattleEntity.h" />
     <ClInclude Include="ClientSession.h" />
     <ClInclude Include="CommonEnum.h" />
     <ClInclude Include="GuardianFactory.h" />
+    <ClInclude Include="IController.h" />
     <ClInclude Include="ITriggerCondition.h" />
+    <ClInclude Include="MatchController.h" />
     <ClInclude Include="MoveEntity.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameHost.h" />

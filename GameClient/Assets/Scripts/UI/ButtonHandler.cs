@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using Network;
 using UnityEngine.UI;
+using Assets;
 
 public class ButtonHandler : MonoBehaviour
 {
-
-    [SerializeField]
-    public NetworkController networkController;
+    private GameSystem gameSystem;
 
     [SerializeField]
     public Text inputField;
 
+    private void Awake()
+    {
+        GameSystem[] gameSystemList = GameObject.FindObjectsOfType<GameSystem>();
+        gameSystem = gameSystemList[0];
+    }
+
     public void OnClickEnterButton()
     {
-        networkController.SendLoginRequest(inputField.text);
+        gameSystem.networkController.SendLoginRequest(inputField.text);
+    }
+
+    public void OnClickAiMatch()
+    {
+        gameSystem.networkController.SendAiMatchRequest();
+
     }
 }
