@@ -6,32 +6,36 @@
 #include "spdlog/spdlog.h"
 #include "MatchController.h"
 #include "AuthController.h"
+#include "PlayerManager.h"
+#include "GameController.h"
+#include "DataSystem.h"
+#include "MatchSystem.h"
 
-PacketController::PacketController()
+PacketController::PacketController(sptr<DataSystem> dataSystem, sptr<MatchSystem> matchSystem)
 {
-	Init();
+    controllerMap.emplace((int)PacketId::Prefix::AUTH, make_shared<AuthController>(dataSystem->GetPlayerManager()));
+    controllerMap.emplace((int)PacketId::Prefix::MATCH, make_shared<MatchController>(matchSystem));
+    controllerMap.emplace((int)PacketId::Prefix::IN_GAME, make_shared<GameController>());
 }
 
-PacketController::~PacketController()
+PacketController::~PacketController() {}
+
+void PacketController::Init() {}
+
+void PacketController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len)
 {
-}
 
-void PacketController::Init() {
-	controllerMap.emplace((int)PacketId::Prefix::AUTH, make_shared<AuthController>());
-	controllerMap.emplace((int)PacketId::Prefix::MATCH, make_shared<MatchController>());
-}
+    PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
+    auto prefix = header->prefix;
 
-void PacketController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) {
+    sptr<IController> controller = controllerMap[prefix];
 
-	PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
-	auto prefix = header->prefix;
-
-	sptr<IController> controller = controllerMap[prefix];
-
-	if (controller) {
-		controller->HandlePacket(session, buffer, len);
-	}
-	else {
-		spdlog::error("[PacketController] invalid prefix = {}", prefix);
-	}
+    if (controller)
+    {
+        controller->HandlePacket(session, buffer, len);
+    }
+    else
+    {
+        spdlog::error("[PacketController] invalid prefix = {}", prefix);
+    }
 }

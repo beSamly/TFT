@@ -1,15 +1,16 @@
 #pragma once
 
-class PlayerManager 
+class PlayerManager
 {
 public:
-	PlayerManager();
-private :
-	USE_LOCK;
-	MapRef<int32, PlayerRef> _players = MakeShared<Map<int32, PlayerRef>>();
+    PlayerManager();
+
+private:
+    USE_LOCK;
+    uptr<map<int32, sptr<Player>>> playerMap = make_unique<Map<int32, sptr<Player>>>();
+    int tempPlayerId = 1;
 
 public:
-	void AddPlayer(PlayerRef player);
-	void Update();
+    void AddPlayer(sptr<Player> player);
+    void Update();
 };
-

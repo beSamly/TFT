@@ -1,17 +1,19 @@
 #pragma once
 #include "IController.h"
+#include "MatchSystem.h"
 
 class MatchController : public IController
 {
 private:
-	map<int, std::function<void(sptr<ClientSession>&, BYTE*, int32)>> handlers;
+    map<int, std::function<void(sptr<ClientSession>&, BYTE*, int32)>> handlers;
+    sptr<MatchSystem> matchSystem;
 
 public:
-	MatchController();
+    MatchController(sptr<MatchSystem> matchSystem);
 
-	void HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) override;
+    void HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) override;
 
 private:
-	void HandleAiMatchRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len);
+    void HandleMatchRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len);
+    void HandleAiMatchRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len);
 };
-

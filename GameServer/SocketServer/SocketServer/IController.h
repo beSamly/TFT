@@ -1,4 +1,7 @@
 #pragma once
+
+#define TO_LAMBDA(FUNC) [&](sptr<ClientSession>& client, BYTE* buffer, int32 len) { FUNC(client, buffer, len); } 
+
 class IController
 {
 public:

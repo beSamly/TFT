@@ -1,16 +1,19 @@
 #pragma once
 #include "VectorPos.h"
 
-class GameData {
+class GameData
+{
 private:
-	GameData();
+    GameData();
 
 public:
-	static GameData* GetInstance();
+    static GameData* GetInstance();
+
 private:
-	list<VectorPos*> route;
-	VectorPos spawnPosition;
+    list<VectorPos*> route;
+    VectorPos spawnPosition;
+
 public:
-	VectorPos GetSpawnPosition();
-	VectorPos GetDestPosition();
+    VectorPos GetSpawnPosition();
+    VectorPos GetDestPosition();
 };
