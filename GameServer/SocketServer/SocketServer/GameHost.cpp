@@ -4,17 +4,15 @@
 
 using namespace Command;
 
-GameHost::GameHost() {}
-
 namespace
 {
 #define TO_LAMBDA(FUNC) [&](sptr<ICommand> command) { FUNC(command); }
 } // namespace
 
+GameHost::GameHost() { commandHandler.emplace((int)CommandId::BUY_COMMAND, TO_LAMBDA(HandleBuyCommand)); }
+
 void GameHost::Init()
 {
-
-    commandHandler.emplace((int)CommandId::BUY_COMMAND, TO_LAMBDA(HandleBuyCommand));
 
     // 더미 Enemy 생성
     // Enemy* e1 = new Enemy(GameData::GetInstance()->GetSpawnPosition());

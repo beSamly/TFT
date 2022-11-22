@@ -6,5 +6,5 @@ class Player
 public:
     int playerId;
     // Player(){};
-    sptr<GameHost> currentGame;
+    wptr<GameHost> currentGame;
 };

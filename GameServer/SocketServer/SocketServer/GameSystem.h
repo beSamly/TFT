@@ -23,9 +23,10 @@ private:
 
 private:
     USE_LOCK;
-    list<uptr<GameHost>> gameHostList;
+    map<int, sptr<GameHost>> gameHostMap;
     queue<sptr<ICommand>> commandQueue;
     map<int, function<void(sptr<ICommand>)>> commandHandler;
+    int hostId = 1; // temp
 
 private:
     void HandleCreateDebugModeHost(sptr<ICommand> p_command);

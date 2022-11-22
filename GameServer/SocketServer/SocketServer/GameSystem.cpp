@@ -95,4 +95,13 @@ void GameSystem::PushCommand(sptr<ICommand> command)
 void GameSystem::HandleCreateDebugModeHost(sptr<ICommand> p_command)
 {
     sptr<CreateDebugModeHostCommand> command = dynamic_pointer_cast<CreateDebugModeHostCommand>(p_command);
+    sptr<GameHost> host = make_shared<GameHost>();
+
+    sptr<ClientSession> client = command->client;
+
+    client->GetPlayer()->currentGame = host;
+
+    host->AddClient(client);
+
+    gameHostMap.emplace(hostId++, host);
 }
