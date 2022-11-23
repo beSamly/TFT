@@ -20,9 +20,6 @@
     <Filter Include="Source Files\GameSystem\Common">
       <UniqueIdentifier>{c49567f8-44c0-4c07-bb08-f5eb3f89e463}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameSystem\Constant">
-      <UniqueIdentifier>{32bff28f-e251-4b5a-8709-1a40a13c46b5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameSystem\Guardian">
       <UniqueIdentifier>{162a5451-1530-4143-afe7-d1bf3b9504cb}</UniqueIdentifier>
     </Filter>
@@ -77,6 +74,21 @@
     <Filter Include="Source Files\DataSystem">
       <UniqueIdentifier>{a104b005-a2dd-4de9-9956-e838495a35c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DataSystem\GameData">
+      <UniqueIdentifier>{01a95daf-1aa7-4293-966b-2588aed013af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataSystem\JsonData">
+      <UniqueIdentifier>{1afcda55-d392-480d-ad24-16489c363ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame">
+      <UniqueIdentifier>{826aca5e-64d8-46f6-8241-785f88c0a1e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Controller">
+      <UniqueIdentifier>{55cbff62-2e30-4726-9827-da73b1c95d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\GameState">
+      <UniqueIdentifier>{626e23e5-a579-4a17-96bd-10353d5fadbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -118,38 +130,17 @@
     <ClCompile Include="GameSystem.cpp">
       <Filter>Source Files\GameSystem</Filter>
     </ClCompile>
-    <ClCompile Include="VectorPos.cpp">
-      <Filter>Source Files\GameSystem\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="MathUtil.cpp">
+    <ClCompile Include="Vector3.cpp">
       <Filter>Source Files\GameSystem\Common</Filter>
     </ClCompile>
     <ClCompile Include="GameHost.cpp">
       <Filter>Source Files\GameSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Guardian.cpp">
-      <Filter>Source Files\GameSystem\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GameData.cpp">
-      <Filter>Source Files\GameSystem\Constant</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\GameSystem\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>Source Files\GameSystem\Guardian</Filter>
     </ClCompile>
-    <ClCompile Include="BattleEntity.cpp">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveEntity.cpp">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="SkillData.cpp">
       <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="StatEntity.cpp">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
     </ClCompile>
     <ClCompile Include="SkillDataFactory.cpp">
       <Filter>Source Files\GameSystem\Factory</Filter>
@@ -214,6 +205,33 @@
     <ClCompile Include="DebugController.cpp">
       <Filter>Source Files\NetworkSystem\PacketHandler</Filter>
     </ClCompile>
+    <ClCompile Include="ChampDataFactory.cpp">
+      <Filter>Source Files\DataSystem\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Champion.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InGamePlayer.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformController.cpp">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="IGameState.cpp">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStartedState.cpp">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="StandByState.cpp">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopProbability.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="RoundStartedState.cpp">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -252,41 +270,20 @@
     <ClInclude Include="GameSystem.h">
       <Filter>Source Files\GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="VectorPos.h">
-      <Filter>Source Files\GameSystem\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="MathUtil.h">
+    <ClInclude Include="Vector3.h">
       <Filter>Source Files\GameSystem\Common</Filter>
     </ClInclude>
     <ClInclude Include="GameHost.h">
       <Filter>Source Files\GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Guardian.h">
-      <Filter>Source Files\GameSystem\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameData.h">
-      <Filter>Source Files\GameSystem\Constant</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Source Files\GameSystem\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>Source Files\GameSystem\Guardian</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEntity.h">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveEntity.h">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
     </ClInclude>
     <ClInclude Include="SkillData.h">
       <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
     </ClInclude>
     <ClInclude Include="CommonEnum.h">
       <Filter>Source Files\GameSystem\GameObject\Type</Filter>
-    </ClInclude>
-    <ClInclude Include="StatEntity.h">
-      <Filter>Source Files\GameSystem\GameObject\Entity</Filter>
     </ClInclude>
     <ClInclude Include="SkillDataFactory.h">
       <Filter>Source Files\GameSystem\Factory</Filter>
@@ -362,6 +359,33 @@
     <ClInclude Include="DebugController.h">
       <Filter>Source Files\NetworkSystem\PacketHandler</Filter>
     </ClInclude>
+    <ClInclude Include="ChampDataFactory.h">
+      <Filter>Source Files\DataSystem\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Champion.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InGamePlayer.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformController.h">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameState.h">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStartedState.h">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="StandByState.h">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopProbability.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundStartedState.h">
+      <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SocketServer.rc" />
@@ -384,5 +408,11 @@
       <Filter>Source Files\GameSystem\json</Filter>
     </None>
     <None Include=".clang-format" />
+    <None Include="json\ChampData.json">
+      <Filter>Source Files\DataSystem\JsonData</Filter>
+    </None>
+    <None Include="json\ChampStatData.json">
+      <Filter>Source Files\DataSystem\JsonData</Filter>
+    </None>
   </ItemGroup>
 </Project>

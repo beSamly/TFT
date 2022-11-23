@@ -2,6 +2,7 @@
 
 #include "GameSystem.h"
 #include "GameHost.h"
+#include "DataSystem.h"
 
 DWORD intervalTick = 1000; // 3초에 한 번씩
 
@@ -10,7 +11,7 @@ namespace
 #define TO_LAMBDA(FUNC) [&](sptr<ICommand> command) { FUNC(command); }
 } // namespace
 
-GameSystem::GameSystem()
+GameSystem::GameSystem(sptr<DataSystem> p_dataSystem) : dataSystem(p_dataSystem)
 {
     commandHandler.emplace((int)CommandId::CREATE_DEBUG_MODE_HOST, TO_LAMBDA(HandleCreateDebugModeHost));
 }
@@ -92,16 +93,49 @@ void GameSystem::PushCommand(sptr<ICommand> command)
     commandQueue.push(command);
 }
 
+sptr<GameHost> GameSystem::CreateHost()
+{
+
+    sptr<GameHost> host = make_shared<GameHost>();
+
+    // Champ pool init
+    vector<ChampData> champData = dataSystem->champDataFactory->GetChampData();
+
+    for (ChampData data : champData)
+    {
+        for (int i = 0; i < data.amount; i++)
+        {
+            data.uid = (data.index * 10000) + i;
+            int cost = data.cost;
+
+            if (host->champPool.find(cost) != host->champPool.end())
+            {
+                vector<ChampData> temp;
+                temp.push_back(data);
+                host->champPool.emplace(cost, temp);
+            }
+            else
+            {
+                vector<ChampData>& temp = host->champPool[cost];
+                temp.push_back(data);
+            }
+        }
+    }
+
+    return host;
+}
+
 void GameSystem::HandleCreateDebugModeHost(sptr<ICommand> p_command)
 {
     sptr<CreateDebugModeHostCommand> command = dynamic_pointer_cast<CreateDebugModeHostCommand>(p_command);
-    sptr<GameHost> host = make_shared<GameHost>();
 
+    sptr<GameHost> host = CreateHost();
     sptr<ClientSession> client = command->client;
 
+    host->EnterClient(client);
     client->GetPlayer()->currentGame = host;
 
-    host->AddClient(client);
+    host->Start();
 
     gameHostMap.emplace(hostId++, host);
 }

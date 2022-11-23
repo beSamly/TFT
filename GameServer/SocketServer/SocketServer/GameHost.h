@@ -1,6 +1,9 @@
 #pragma once
 #include "pch.h"
 #include "Command.h"
+#include "ChampDataFactory.h"
+#include "InGamePlayer.h"
+#include "IGameState.h"
 
 using Command::ICommand;
 
@@ -8,30 +11,28 @@ class GameHost
 {
 private:
     USE_LOCK;
+    sptr<IGameState> currentState;
     queue<sptr<ICommand>> commandQueue;
     map<int, function<void(sptr<ICommand>)>> commandHandler;
-    vector<sptr<ClientSession>> clientVec;
 
-    /* list<Enemy*> enemyList;
-     list<Guardian*> guardianList;*/
+public:
+    map<int, vector<ChampData>> champPool;
+    map<int, sptr<InGamePlayer>> inGamePlayerMap;
 
 public:
     GameHost();
-    void AddClient(sptr<ClientSession> client) { clientVec.push_back(client); }
-    /*list<Enemy*> GetEnemyList() { return enemyList; };
-    list<Guardian*> GetGuardianList() { return guardianList; };*/
+    void Start();
 
+    void EnterClient(sptr<ClientSession> client);
     void PushCommand(sptr<ICommand> command);
-
-public:
     void Update(float deltaTime);
-    void Init();
+    void InitChampPool(vector<ChampData> champDataVec);
 
 private:
-    void UpdateEntityList(float deltaTime);
-    void UpdateDeadEntity(float deltaTime);
+    void SetCurrentState(sptr<IGameState> newState) { currentState = newState; }
 
 private:
     /* Command Handler */
     void HandleBuyCommand(sptr<ICommand> command);
+    void HandleSellCommand(sptr<ICommand> command);
 };

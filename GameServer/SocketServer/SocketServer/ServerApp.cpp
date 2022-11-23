@@ -11,9 +11,9 @@ int32 WORKER_TICK = 64;
 
 ServerApp::ServerApp()
 {
-    inGameSystem = make_shared<GameSystem>();
     threadSystem = make_shared<ThreadSystem>();
     dataSystem = make_shared<DataSystem>();
+    inGameSystem = make_shared<GameSystem>(dataSystem);
     matchSystem = make_shared<MatchSystem>(inGameSystem);
     networkSystem = make_shared<NetworkSystem>(dataSystem, matchSystem);
 }
