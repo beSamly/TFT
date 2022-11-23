@@ -3,11 +3,15 @@
 
 class Champion
 {
+private:
+    // TransformController
+    // StatController
+    // SkillController
+
 public:
     Champion(){};
     int star;
     void Update(float deltaTime);
-    // TransformController
-    // StatController
-    // SkillController
+
+    void SetBaseStat(ChampStatData statData);
 };

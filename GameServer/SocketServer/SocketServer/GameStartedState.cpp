@@ -23,7 +23,7 @@ void GameStartedState::Update(GameHost& gameHost, float deltaTime)
                     ChampData data = champByCost[random];
 
                     champByCost.erase(champByCost.begin() + random);
-                    inGamePlayer->champShop.emplace(data.uid, data);
+                    inGamePlayer->champShop.AddChamp(data.uid, data);
                 }
             }
         }

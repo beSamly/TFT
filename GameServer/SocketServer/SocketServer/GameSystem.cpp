@@ -95,8 +95,7 @@ void GameSystem::PushCommand(sptr<ICommand> command)
 
 sptr<GameHost> GameSystem::CreateHost()
 {
-
-    sptr<GameHost> host = make_shared<GameHost>();
+    sptr<GameHost> host = make_shared<GameHost>(dataSystem->champDataFactory);
 
     // Champ pool init
     vector<ChampData> champData = dataSystem->champDataFactory->GetChampData();

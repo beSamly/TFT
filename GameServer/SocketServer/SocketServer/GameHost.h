@@ -15,12 +15,15 @@ private:
     queue<sptr<ICommand>> commandQueue;
     map<int, function<void(sptr<ICommand>)>> commandHandler;
 
+    /* Data */
+    sptr<ChampDataFactory> champDataFactory;
+
 public:
     map<int, vector<ChampData>> champPool;
     map<int, sptr<InGamePlayer>> inGamePlayerMap;
 
 public:
-    GameHost();
+    GameHost(sptr<ChampDataFactory> p_champDataFactory);
     void Start();
 
     void EnterClient(sptr<ClientSession> client);

@@ -232,6 +232,15 @@
     <ClCompile Include="RoundStartedState.cpp">
       <Filter>Source Files\GameSystem\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="ChampShop.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Bench.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -385,6 +394,15 @@
     </ClInclude>
     <ClInclude Include="RoundStartedState.h">
       <Filter>Source Files\GameSystem\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampShop.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Bench.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

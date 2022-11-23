@@ -2,6 +2,9 @@
 #include "ClientSession.h"
 #include "Champion.h"
 #include "ShopProbability.h"
+#include "ChampShop.h"
+#include "Field.h"
+#include "Bench.h"
 
 class InGamePlayer
 {
@@ -10,7 +13,7 @@ public:
     sptr<ClientSession> client;
 
     ShopProbability shopProb;
-    map<int, ChampData> champShop;
-    map<int, sptr<Champion>> bench;
-    map<int, sptr<Champion>> field;
+    ChampShop champShop;
+    Field field;
+    Bench bench;
 };

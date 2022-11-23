@@ -14,7 +14,12 @@ namespace
 #define SET_CURRENT_STATE_TO_LAMBDA(FUNC) [&](sptr<IGameState> newState) { FUNC(newState); }
 } // namespace
 
-GameHost::GameHost() { commandHandler.emplace((int)CommandId::BUY_COMMAND, TO_LAMBDA(HandleBuyCommand)); }
+GameHost::GameHost(sptr<ChampDataFactory> p_champDataFactory) : champDataFactory(p_champDataFactory)
+{
+    commandHandler.emplace((int)CommandId::BUY_COMMAND, TO_LAMBDA(HandleBuyCommand));
+}
+
+GameHost::GameHost(sptr<ChampDataFactory> p_champDataFactory) {}
 
 void GameHost::Start() { currentState = make_shared<GameStartedState>(); }
 
@@ -82,8 +87,53 @@ void GameHost::InitChampPool(vector<ChampData> champDataVec)
 
 void GameHost::HandleBuyCommand(sptr<ICommand> command)
 {
+    sptr<BuyCommand> buyCommand = dynamic_pointer_cast<BuyCommand>(command);
+
+    if (buyCommand == nullptr)
+    {
+        // error
+        return;
+    }
 
     // 구매하려는 champData 기반으로 champion 데이터 만들어서 벤치에 넣어주기
+
+    sptr<ClientSession> client = command->client;
+    int playerId = client->GetPlayer()->playerId;
+
+    if (!inGamePlayerMap.count(playerId))
+    {
+        // error
+        return;
+    }
+
+    sptr<InGamePlayer> inGamePlayer = inGamePlayerMap[playerId];
+
+    // 해당 유저의 상점에 해당 챔피언 존재하는지 체크
+    int uid = buyCommand->champUid;
+
+    bool isExist = inGamePlayer->champShop.Exist(uid);
+    if (!isExist)
+    {
+
+        // error
+        return;
+    }
+
+    //
+    int freeBenchIndex = inGamePlayer->bench.GetEmptyBenchIndex();
+    if (!freeBenchIndex)
+    {
+        // cant buy
+        return;
+    }
+
+    // sptr<Champion> 데이터 생성
+
+    // bench 에 넣어주기
+
+    // 골드 차감
+
+    int benchIndex = inGamePlayer->bench.GetEmptyBenchIndex();
 }
 
 void GameHost::HandleSellCommand(sptr<ICommand> command)

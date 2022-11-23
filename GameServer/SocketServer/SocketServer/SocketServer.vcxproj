@@ -160,12 +160,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AuthController.cpp" />
+    <ClCompile Include="Bench.cpp" />
     <ClCompile Include="ChampDataFactory.cpp" />
     <ClCompile Include="Champion.cpp" />
+    <ClCompile Include="ChampShop.cpp" />
     <ClCompile Include="ClientSession.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="DataSystem.cpp" />
     <ClCompile Include="DebugController.cpp" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameStartedState.cpp" />
     <ClCompile Include="GuardianFactory.cpp" />
@@ -214,13 +217,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthController.h" />
+    <ClInclude Include="Bench.h" />
     <ClInclude Include="ChampDataFactory.h" />
     <ClInclude Include="Champion.h" />
+    <ClInclude Include="ChampShop.h" />
     <ClInclude Include="ClientSession.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommonEnum.h" />
     <ClInclude Include="DataSystem.h" />
     <ClInclude Include="DebugController.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameStartedState.h" />
     <ClInclude Include="GuardianFactory.h" />
