@@ -1,9 +1,9 @@
 #pragma once
-#include "ClientSession.h"
 #include "Champion.h"
 
 class Bench
 {
+private:
     map<int, sptr<Champion>> benchMap;
 
 public:

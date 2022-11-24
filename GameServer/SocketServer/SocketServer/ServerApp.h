@@ -12,11 +12,8 @@
 class ServerApp
 {
 public:
-    sptr<SocketServer> socketServer;
     sptr<ThreadSystem> threadSystem;
     sptr<GameSystem> inGameSystem;
-    uptr<PacketController> packetController;
-    sptr<PlayerManager> playerManager;
     sptr<MatchSystem> matchSystem;
     sptr<DataSystem> dataSystem;
     sptr<NetworkSystem> networkSystem;

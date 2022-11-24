@@ -1,4 +1,5 @@
 #pragma once
+#include "ClientSession.h"
 
 class IPacketHandler
 {

@@ -28,6 +28,10 @@ void NetworkSystem::StartSocketServer()
     spdlog::info("Server listening on {}", PORT);
 }
 
+void NetworkSystem::HandleIocpEvent(int NETWORK_TIME_OUT_MS) {
+    socketServer->GetIocpCore()->HandleIocpEvent(NETWORK_TIME_OUT_MS);
+}
+
 void NetworkSystem::OnClientRecv(sptr<ClientSession> client, BYTE* buffer, int len)
 {
     packetController->HandlePacket(client, buffer, len);

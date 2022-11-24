@@ -2,12 +2,13 @@
 
 #include "ServerApp.h"
 #include "spdlog/spdlog.h"
-#include <PacketHeader.h>
+#include "PacketHeader.h"
+#include "TLS.h"
 #include "MatchSystem.h"
 
-int32 MAX_WORKER_THREAD = 10;
-int32 NETWORK_TIME_OUT_MS = 1000;
-int32 WORKER_TICK = 64;
+int MAX_WORKER_THREAD = 10;
+int NETWORK_TIME_OUT_MS = 1000;
+int WORKER_TICK = 64;
 
 ServerApp::ServerApp()
 {
@@ -36,7 +37,7 @@ void ServerApp::StartSocketServer()
                     LEndTickCount = ::GetTickCount64() + WORKER_TICK;
 
                     // 네트워크 입출력 및 패킷 핸들러 실행
-                    socketServer->GetIocpCore()->HandleIocpEvent(NETWORK_TIME_OUT_MS);
+                    networkSystem->HandleIocpEvent(NETWORK_TIME_OUT_MS);
 
                     // Global Queue 의 일감 실행
                     // threadSystem::DoGlobalQueueWork();
@@ -52,8 +53,6 @@ void ServerApp::StartSocketServer()
 
 void ServerApp::StartGameSystem()
 {
-    inGameSystem->Init();
-
     //게임시스템 쓰레드
     threadSystem->Launch([&]() { inGameSystem->Run(); });
     threadSystem->Join();

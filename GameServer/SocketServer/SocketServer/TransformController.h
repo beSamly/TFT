@@ -8,4 +8,5 @@ private:
 
 public:
     TransformController(){};
+    Vector3 GetPosition();
 };

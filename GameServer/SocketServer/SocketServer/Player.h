@@ -1,5 +1,6 @@
 #pragma once
-#include "GameHost.h"
+
+class GameHost;
 
 class Player
 {

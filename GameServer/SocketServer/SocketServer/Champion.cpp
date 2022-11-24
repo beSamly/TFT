@@ -3,7 +3,4 @@
 
 void Champion::Update(float deltaTime) {}
 
-void Champion::SetBaseStat(ChampStatData statData)
-{
-    // todo statController 에 넣어주기
-}
+void Champion::SetBaseStat(ChampStatData statData) { stat.SetBaseStat(statData); }

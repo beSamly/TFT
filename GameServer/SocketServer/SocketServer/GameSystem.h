@@ -7,31 +7,35 @@ using namespace Command;
 
 class GameSystem
 {
-
 public:
     GameSystem(sptr<DataSystem> p_dataSystem);
 
 public:
-    void Init();
     void Run();
     void PushCommand(sptr<ICommand> command);
 
 private:
+    USE_LOCK;
+    int hostId = 1; // temp
+    map<int, sptr<GameHost>> gameHostMap;
+
+    /* Command related */
+    queue<sptr<ICommand>> commandQueue;
+    map<int, function<void(sptr<ICommand>)>> commandHandler;
+
+    /* GameData related */
     sptr<DataSystem> dataSystem;
 
 private:
     void Update(float deltaTime);
+
+    /* Command related */
     queue<sptr<ICommand>> FlushQueue();
     void ProcessCommand();
 
-private:
-    USE_LOCK;
-    map<int, sptr<GameHost>> gameHostMap;
-    queue<sptr<ICommand>> commandQueue;
-    map<int, function<void(sptr<ICommand>)>> commandHandler;
-    int hostId = 1; // temp
-    sptr<GameHost> CreateHost();
-
-private:
+    /* Command handlers */
     void HandleCreateDebugModeHost(sptr<ICommand> p_command);
+
+    /* function used in command handlers */
+    sptr<GameHost> CreateHost();
 };

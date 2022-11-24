@@ -1,6 +1,7 @@
 #pragma once
 #include "IController.h"
 #include "PlayerManager.h"
+#include "ClientSession.h"
 
 class AuthController : public IController
 {

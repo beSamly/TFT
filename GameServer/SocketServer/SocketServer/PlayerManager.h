@@ -1,4 +1,5 @@
 #pragma once
+#include "Player.h"
 
 class PlayerManager
 {
@@ -7,7 +8,7 @@ public:
 
 private:
     USE_LOCK;
-    uptr<map<int32, sptr<Player>>> playerMap = make_unique<Map<int32, sptr<Player>>>();
+    uptr<map<int, sptr<Player>>> playerMap = make_unique<map<int, sptr<Player>>>();
     int tempPlayerId = 1;
 
 public:

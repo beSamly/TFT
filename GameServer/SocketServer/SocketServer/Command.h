@@ -1,11 +1,8 @@
 #pragma once
 #include "ClientSession.h"
 
-class ClientSession;
-
 namespace Command
 {
-
     enum CommandId
     {
         BUY_COMMAND = 1,
@@ -17,19 +14,19 @@ namespace Command
     class ICommand
     {
     public:
-        sptr<ClientSession> client;
+        wptr<ClientSession> client;
         int commandId;
 
     public:
         ICommand(){};
-        ICommand(sptr<ClientSession> p_client) : client(p_client){};
+        ICommand(wptr<ClientSession> p_client) : client(p_client){};
         virtual int GetCommandId() { return commandId; };
     };
 
     class BuyCommand : public ICommand
     {
     public:
-        BuyCommand(sptr<ClientSession> p_client, int p_champUid) : champUid(p_champUid), ICommand(p_client)
+        BuyCommand(wptr<ClientSession> p_client, int p_champUid) : champUid(p_champUid), ICommand(p_client)
         {
             ICommand::commandId = CommandId::BUY_COMMAND;
         };
@@ -44,7 +41,7 @@ namespace Command
         int matchType;
 
     public:
-        MatchRequestCommand(sptr<ClientSession> p_client) : ICommand(p_client)
+        MatchRequestCommand(wptr<ClientSession> p_client) : ICommand(p_client)
         {
             ICommand::commandId = CommandId::MATCH_REQUEST;
         };
@@ -53,10 +50,10 @@ namespace Command
     class CreateHostCommand : public ICommand
     {
     public:
-        vector<sptr<ClientSession>> clientVec;
+        vector<wptr<ClientSession>> clientVec;
 
     public:
-        CreateHostCommand(vector<sptr<ClientSession>> p_clientVec) : clientVec(p_clientVec)
+        CreateHostCommand(vector<wptr<ClientSession>> p_clientVec) : clientVec(p_clientVec)
         {
             ICommand::commandId = CommandId::CREATE_HOST;
         };
@@ -68,7 +65,7 @@ namespace Command
         int fieldIndex;
 
     public:
-        LocateToFieldCommand(sptr<ClientSession> p_client, int p_fieldIndex)
+        LocateToFieldCommand(wptr<ClientSession> p_client, int p_fieldIndex)
             : fieldIndex(p_fieldIndex), ICommand(p_client){};
     };
 
@@ -78,7 +75,7 @@ namespace Command
         int benchIndex;
 
     public:
-        LocateToBenchCommand(sptr<ClientSession> p_client, int p_benchIndex)
+        LocateToBenchCommand(wptr<ClientSession> p_client, int p_benchIndex)
             : benchIndex(p_benchIndex), ICommand(p_client){};
     };
 
@@ -86,6 +83,6 @@ namespace Command
     {
 
     public:
-        CreateDebugModeHostCommand(sptr<ClientSession> p_client) : ICommand(p_client){};
+        CreateDebugModeHostCommand(wptr<ClientSession> p_client) : ICommand(p_client){};
     };
 } // namespace Command

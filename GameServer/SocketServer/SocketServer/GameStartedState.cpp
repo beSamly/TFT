@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameStartedState.h"
+#include "GameHost.h"
 
 void GameStartedState::Update(GameHost& gameHost, float deltaTime)
 {

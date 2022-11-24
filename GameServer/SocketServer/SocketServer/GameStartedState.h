@@ -1,5 +1,6 @@
 #pragma once
 #include "IGameState.h"
+#include "GameHost.h"
 
 class GameStartedState : public IGameState
 {

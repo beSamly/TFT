@@ -241,6 +241,24 @@
     <ClCompile Include="Field.cpp">
       <Filter>Source Files\GameSystem\InGame</Filter>
     </ClCompile>
+    <ClCompile Include="StatController.cpp">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedMutexGuard.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchHistory.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameMatchList.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameMatch.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldMap.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -403,6 +421,27 @@
     </ClInclude>
     <ClInclude Include="Field.h">
       <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StatController.h">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedMutexGuard.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchHistory.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameMatchList.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameMatch.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldMap.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryHeader.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

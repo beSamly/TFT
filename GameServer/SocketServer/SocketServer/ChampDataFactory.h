@@ -1,8 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "SkillData.h"
-#include "TriggerConditionFactory.h"
-#include "OperationFactory.h"
 
 struct ChampData
 {
@@ -33,7 +30,7 @@ private:
 public:
     ChampDataFactory(){};
     void LoadJsonData();
-    vector<ChampData> GetChampData() { return champDataVec; };
+    vector<ChampData> GetChampData();
     ChampStatData GetStatData(int champIndex, int star);
 
 private:

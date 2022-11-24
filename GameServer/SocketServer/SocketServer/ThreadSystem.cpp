@@ -16,7 +16,7 @@ ThreadSystem::~ThreadSystem() { Join(); }
 
 void ThreadSystem::Launch(function<void(void)> callback)
 {
-    LockGuard guard(_lock);
+    lock_guard<mutex> guard(_lock);
 
     _threads.push_back(thread(
         [=]()
@@ -39,7 +39,7 @@ void ThreadSystem::Join()
 
 void ThreadSystem::InitTLS()
 {
-    static Atomic<uint32> SThreadId = 1;
+    static atomic<int> SThreadId = 1;
     LThreadId = SThreadId.fetch_add(1);
 }
 

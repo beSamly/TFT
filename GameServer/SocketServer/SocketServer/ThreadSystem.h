@@ -7,6 +7,10 @@
         ThreadSystem
 -------------------*/
 
+using std::atomic;
+using std::lock_guard;
+using std::thread;
+
 class ThreadSystem
 {
 public:
@@ -23,6 +27,6 @@ public:
     static void DistributeReservedJobs();
 
 private:
-    Mutex _lock;
+    mutex _lock;
     vector<thread> _threads;
 };

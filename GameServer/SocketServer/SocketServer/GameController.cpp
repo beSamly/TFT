@@ -30,10 +30,10 @@ void GameController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, in
 
 void GameController::HandleBuy(sptr<ClientSession>& session, BYTE* buffer, int32 len)
 {
-    if (sptr<GameHost> gameHost = session->GetPlayer()->currentGame.lock())
-    {
-        // gameHost->PushCommand(...)
-    }
+    // if (sptr<GameHost> gameHost = session->GetPlayer()->currentGame.lock())
+    //{
+    //     // gameHost->PushCommand(...)
+    // }
 
     // sptr<ICommand> command = make_shared<BuyCommand>(1, 1);
     // session->GetPlayer()->currentGame->PushCommand(command);

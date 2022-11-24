@@ -16,13 +16,6 @@ GameSystem::GameSystem(sptr<DataSystem> p_dataSystem) : dataSystem(p_dataSystem)
     commandHandler.emplace((int)CommandId::CREATE_DEBUG_MODE_HOST, TO_LAMBDA(HandleCreateDebugModeHost));
 }
 
-void GameSystem::Init()
-{
-    /*GameHost* host1 = new GameHost();
-    host1->Init();
-    gameHostList.push_back(host1);*/
-}
-
 void GameSystem::Run()
 {
     DWORD intervalTick = 20; // 50 frame
@@ -126,15 +119,20 @@ sptr<GameHost> GameSystem::CreateHost()
 
 void GameSystem::HandleCreateDebugModeHost(sptr<ICommand> p_command)
 {
-    sptr<CreateDebugModeHostCommand> command = dynamic_pointer_cast<CreateDebugModeHostCommand>(p_command);
+    // sptr<CreateDebugModeHostCommand> command = dynamic_pointer_cast<CreateDebugModeHostCommand>(p_command);
 
-    sptr<GameHost> host = CreateHost();
-    sptr<ClientSession> client = command->client;
+    // sptr<GameHost> host = CreateHost();
+    // sptr<ClientSession> client = command->client.lock();
+    // if (client == nullptr)
+    //{
+    //     // client deleted
+    //     return;
+    // }
 
-    host->EnterClient(client);
-    client->GetPlayer()->currentGame = host;
+    // host->EnterClient(client);
+    // client->GetPlayer()->currentGame = host;
 
-    host->Start();
+    // host->Start();
 
-    gameHostMap.emplace(hostId++, host);
+    // gameHostMap.emplace(hostId++, host);
 }

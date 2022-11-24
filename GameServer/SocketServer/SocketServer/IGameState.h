@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
-#include "GameHost.h"
+
+class GameHost;
 
 enum GameState
 {
@@ -9,8 +10,6 @@ enum GameState
     ROUND_STARTED,
     ROUND_ENDED
 };
-
-class GameHost;
 
 class IGameState
 {

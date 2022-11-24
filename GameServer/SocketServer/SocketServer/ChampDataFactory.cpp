@@ -1,8 +1,7 @@
 #include "pch.h"
-#include "ChampDataFactory.h"
-#include <nlohmann/json.hpp>
 #include <fstream>
-#include "SkillData.h"
+#include "ChampDataFactory.h"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
@@ -11,6 +10,8 @@ void ChampDataFactory::LoadJsonData()
     LoadChampData();
     LoadChampStatData();
 }
+
+vector<ChampData> ChampDataFactory::GetChampData() { return champDataVec; }
 
 ChampStatData ChampDataFactory::GetStatData(int champIndex, int star)
 {

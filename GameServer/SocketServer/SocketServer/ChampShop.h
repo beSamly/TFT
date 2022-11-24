@@ -1,5 +1,4 @@
 #pragma once
-#include "ClientSession.h"
 #include "ChampDataFactory.h"
 
 class ChampShop

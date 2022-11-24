@@ -1,17 +1,17 @@
 #pragma once
-#include "ClientSession.h"
+#include "TransformController.h"
+#include "StatController.h"
 
 class Champion
 {
-private:
-    // TransformController
-    // StatController
-    // SkillController
-
 public:
     Champion(){};
     int star;
     void Update(float deltaTime);
-
     void SetBaseStat(ChampStatData statData);
+
+private:
+    TransformController transform;
+    StatController stat;
+    // SkillController
 };

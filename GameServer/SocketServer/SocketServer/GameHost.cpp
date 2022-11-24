@@ -19,8 +19,6 @@ GameHost::GameHost(sptr<ChampDataFactory> p_champDataFactory) : champDataFactory
     commandHandler.emplace((int)CommandId::BUY_COMMAND, TO_LAMBDA(HandleBuyCommand));
 }
 
-GameHost::GameHost(sptr<ChampDataFactory> p_champDataFactory) {}
-
 void GameHost::Start() { currentState = make_shared<GameStartedState>(); }
 
 void GameHost::EnterClient(sptr<ClientSession> client)
@@ -97,7 +95,13 @@ void GameHost::HandleBuyCommand(sptr<ICommand> command)
 
     // 구매하려는 champData 기반으로 champion 데이터 만들어서 벤치에 넣어주기
 
-    sptr<ClientSession> client = command->client;
+    sptr<ClientSession> client = command->client.lock();
+    if (client == nullptr)
+    {
+        // client deleted
+        return;
+    }
+
     int playerId = client->GetPlayer()->playerId;
 
     if (!inGamePlayerMap.count(playerId))
@@ -114,26 +118,27 @@ void GameHost::HandleBuyCommand(sptr<ICommand> command)
     bool isExist = inGamePlayer->champShop.Exist(uid);
     if (!isExist)
     {
-
         // error
         return;
     }
 
-    //
     int freeBenchIndex = inGamePlayer->bench.GetEmptyBenchIndex();
     if (!freeBenchIndex)
     {
-        // cant buy
+        // Bench is full!!
         return;
     }
 
+    ChampStatData statData = champDataFactory->GetStatData(uid, 1);
+
     // sptr<Champion> 데이터 생성
+    sptr<Champion> champ = make_shared<Champion>();
+    champ->SetBaseStat(statData);
 
     // bench 에 넣어주기
+    inGamePlayer->bench.Locate(freeBenchIndex, champ);
 
-    // 골드 차감
-
-    int benchIndex = inGamePlayer->bench.GetEmptyBenchIndex();
+    // TODO 골드 차감
 }
 
 void GameHost::HandleSellCommand(sptr<ICommand> command)

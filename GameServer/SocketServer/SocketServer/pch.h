@@ -8,21 +8,29 @@
 #include <string>
 #include <map>
 #include <queue>
+#include <mutex>
 
-#define _SILENCE_CXX20_CISO646_REMOVED_WARNING
-#define _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS
+#include <winsock2.h>
+#include <mswsock.h>
+#include <ws2tcpip.h>
+#include <windows.h>
 
-#ifdef _DEBUG
-#pragma comment(lib, "Protobuf\\_Debug\\libprotobufd.lib")
-#pragma comment(lib, "ServerCoreLibrary\\Debug\\ServerCoreLibrary.lib")
-#pragma comment(lib, "SharedProtobuf\\Debug\\SharedProtobuf.lib")
-#pragma comment(lib, "PhysicsEngine\\Debug\\PhysicsEngine.lib")
-#else
-#pragma comment(lib, "Protobuf\\_Release\\libprotobuf.lib")
-#pragma comment(lib, "ServerCoreLibrary\\Release\\ServerCoreLibrary.lib")
-#pragma comment(lib, "ServerCoreLibrary\\Release\\SharedProtobuf.lib")
-#pragma comment(lib, "PhysicsEngine\\Release\\PhysicsEngine.lib")
-#endif
+//#pragma comment(lib, "ws2_32.lib")
+//
+//#define _SILENCE_CXX20_CISO646_REMOVED_WARNING
+//#define _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS
+//
+//#ifdef _DEBUG
+//#pragma comment(lib, "Protobuf\\_Debug\\libprotobufd.lib")
+//#pragma comment(lib, "ServerCoreLibrary\\Debug\\ServerCoreLibrary.lib")
+//#pragma comment(lib, "SharedProtobuf\\Debug\\SharedProtobuf.lib")
+//#pragma comment(lib, "PhysicsEngine\\Debug\\PhysicsEngine.lib")
+//#else
+//#pragma comment(lib, "Protobuf\\_Release\\libprotobuf.lib")
+//#pragma comment(lib, "ServerCoreLibrary\\Release\\ServerCoreLibrary.lib")
+//#pragma comment(lib, "ServerCoreLibrary\\Release\\SharedProtobuf.lib")
+//#pragma comment(lib, "PhysicsEngine\\Release\\PhysicsEngine.lib")
+//#endif
 
 #define STR(arg) string(arg)
 
@@ -32,6 +40,7 @@ using std::make_pair;
 using std::make_shared;
 using std::make_unique;
 using std::map;
+using std::mutex;
 using std::queue;
 using std::shared_ptr;
 using std::string;
@@ -46,24 +55,35 @@ using uptr = std::unique_ptr<T>;
 template <typename T>
 using wptr = std::weak_ptr<T>;
 
-#include "GlobalPch.h"
-#include "OperationType.h"
-#include "SocketServer.h"
-#include "TLS.h"
-#include "TargetType.h"
-#include "TriggerType.h"
+/*-------------------------
+|		  매크로		      |
+--------------------------*/
+#define USE_MUL_LOCK(count) std::shared_mutex _locks[count];
+#define USE_LOCK USE_MUL_LOCK(1)
 
-// using ColumnRef = std::shared_ptr<class Column>;
-// using JobQueueRef = std::shared_ptr<class JobQueue>;
-// using JobRef = std::shared_ptr<class Job>;
-// using JobDataRef = std::shared_ptr<class JobData>;
-// using CallbackType = std::function<void()>;
+#include "SharedMutexGuard.h"
+#define READ_LOCK_IDX(idx) SMReadLockGuard readLockGuard_##idx(_locks[idx]);
+#define WRITE_LOCK_IDX(idx) SMWriteLockGuard writeLockGuard_##idx(_locks[idx]);
 
-// template<typename T>
-// using EquipItemRef = std::shared_ptr<class EquipItem>;
-//
-// using PlayerRef = std::shared_ptr<class Player>;
-// using AccountRef = std::shared_ptr<class Account>;
-// using DBConnectionGaurdRef = std::shared_ptr<class DBConnectionGaurd>;
+#define WRITE_LOCK WRITE_LOCK_IDX(0)
+#define READ_LOCK READ_LOCK_IDX(0)
 
-//게임플레이 관련
+/*---------------
+          Crash
+---------------*/
+
+#define CRASH(cause)                                                                                                   \
+    {                                                                                                                  \
+        uint32* crash = nullptr;                                                                                       \
+        __analysis_assume(crash != nullptr);                                                                           \
+        *crash = 0xDEADBEEF;                                                                                           \
+    }
+
+#define ASSERT_CRASH(expr)                                                                                             \
+    {                                                                                                                  \
+        if (!(expr))                                                                                                   \
+        {                                                                                                              \
+            CRASH("ASSERT_CRASH");                                                                                     \
+            __analysis_assume(expr);                                                                                   \
+        }                                                                                                              \
+    }

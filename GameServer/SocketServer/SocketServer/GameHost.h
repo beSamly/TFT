@@ -4,6 +4,8 @@
 #include "ChampDataFactory.h"
 #include "InGamePlayer.h"
 #include "IGameState.h"
+#include "MatchHistory.h"
+#include "InGameMatchList.h"
 
 using Command::ICommand;
 
@@ -21,6 +23,8 @@ private:
 public:
     map<int, vector<ChampData>> champPool;
     map<int, sptr<InGamePlayer>> inGamePlayerMap;
+    MatchHistory matchHistory;
+    InGameMatchList matchList;
 
 public:
     GameHost(sptr<ChampDataFactory> p_champDataFactory);
