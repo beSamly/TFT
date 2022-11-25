@@ -5,8 +5,9 @@ class TransformController
 {
 private:
     Vector3 position;
+    Vector3 targetPosition;
 
 public:
-    TransformController(){};
+    TransformController() {};
     Vector3 GetPosition();
 };

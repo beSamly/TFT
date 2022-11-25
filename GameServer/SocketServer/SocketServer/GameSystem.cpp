@@ -11,9 +11,12 @@ namespace
 #define TO_LAMBDA(FUNC) [&](sptr<ICommand> command) { FUNC(command); }
 } // namespace
 
+using namespace Command::M2G;
+using namespace Command::N2G;
+
 GameSystem::GameSystem(sptr<DataSystem> p_dataSystem) : dataSystem(p_dataSystem)
 {
-    commandHandler.emplace((int)CommandId::CREATE_DEBUG_MODE_HOST, TO_LAMBDA(HandleCreateDebugModeHost));
+    //commandHandler.emplace((int)N2G::CommandId::CREATE_DEBUG_MODE_HOST, TO_LAMBDA(HandleCreateDebugModeHost));
 }
 
 void GameSystem::Run()

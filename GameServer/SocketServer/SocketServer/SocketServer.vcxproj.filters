@@ -89,6 +89,9 @@
     <Filter Include="Source Files\GameSystem\GameState">
       <UniqueIdentifier>{626e23e5-a579-4a17-96bd-10353d5fadbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameSystem\InGameEvent">
+      <UniqueIdentifier>{225da4dc-6a1c-4988-8543-f6110809f64e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -250,7 +253,7 @@
     <ClCompile Include="MatchHistory.cpp">
       <Filter>Source Files\GameSystem\InGame</Filter>
     </ClCompile>
-    <ClCompile Include="InGameMatchList.cpp">
+    <ClCompile Include="InGameMatchPool.cpp">
       <Filter>Source Files\GameSystem\InGame</Filter>
     </ClCompile>
     <ClCompile Include="InGameMatch.cpp">
@@ -258,6 +261,21 @@
     </ClCompile>
     <ClCompile Include="FieldMap.cpp">
       <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameEventHandler.cpp">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="IInGameEvent.cpp">
+      <Filter>Source Files\GameSystem\InGameEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandHandler.cpp">
+      <Filter>Source Files\GameSystem\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchWaitPlayer.cpp">
+      <Filter>Source Files\MatchSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PendingMatch.cpp">
+      <Filter>Source Files\MatchSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -431,7 +449,7 @@
     <ClInclude Include="MatchHistory.h">
       <Filter>Source Files\GameSystem\InGame</Filter>
     </ClInclude>
-    <ClInclude Include="InGameMatchList.h">
+    <ClInclude Include="InGameMatchPool.h">
       <Filter>Source Files\GameSystem\InGame</Filter>
     </ClInclude>
     <ClInclude Include="InGameMatch.h">
@@ -442,6 +460,21 @@
     </ClInclude>
     <ClInclude Include="LibraryHeader.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameEventHandler.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="IInGameEvent.h">
+      <Filter>Source Files\GameSystem\InGameEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandHandler.h">
+      <Filter>Source Files\GameSystem\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchWaitPlayer.h">
+      <Filter>Source Files\MatchSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PendingMatch.h">
+      <Filter>Source Files\MatchSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

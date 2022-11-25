@@ -10,7 +10,7 @@ public:
     void Update(float deltaTime);
 
     FieldMap fieldMap;
-    // vector<sptr<Champion> 
+    vector <sptr<Champion>> aChampions;
+    vector <sptr<Champion>> bChampions;
     // map data
-
 };

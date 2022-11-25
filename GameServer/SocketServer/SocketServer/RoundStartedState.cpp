@@ -12,7 +12,11 @@ void RoundStartedState::Update(GameHost& gameHost, float deltaTime)
         isMatchCreated = true;
     }
 
-    gameHost.matchList.Update(deltaTime);
+    //gameHost.matchList.Update(deltaTime);
+
+    for (sptr<InGameMatch>& match : gameHost.matchPool.GetMatches()) {
+        match->Update(deltaTime);
+    }
 
     if (elapsedSec > 10000)
     {
@@ -56,7 +60,7 @@ void RoundStartedState::CreateMatch(GameHost& gameHost)
                 // 매칭 리스트에 넣어주기
                 sptr<InGameMatch> match;
                 match->InitMatch(inGamePlayer->field, target->field);
-                gameHost.matchList.AddMatch(match);
+                gameHost.matchPool.AddMatch(match);
                 break;
             }
 
@@ -67,7 +71,7 @@ void RoundStartedState::CreateMatch(GameHost& gameHost)
             if (i == playerIdVec.size()) {
                 sptr<InGameMatch> match;
                 match->InitMatch(inGamePlayer->field, target->field);
-                gameHost.matchList.AddMatch(match);
+                gameHost.matchPool.AddMatch(match);
             }
         }
     }

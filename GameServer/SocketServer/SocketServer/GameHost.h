@@ -5,7 +5,10 @@
 #include "InGamePlayer.h"
 #include "IGameState.h"
 #include "MatchHistory.h"
-#include "InGameMatchList.h"
+#include "InGameMatchPool.h"
+#include "IInGameEvent.h"
+#include "InGameEventHandler.h"
+#include "CommandHandler.h"
 
 using Command::ICommand;
 
@@ -15,7 +18,9 @@ private:
     USE_LOCK;
     sptr<IGameState> currentState;
     queue<sptr<ICommand>> commandQueue;
-    map<int, function<void(sptr<ICommand>)>> commandHandler;
+    queue<sptr<IInGameEvent>> eventQueue;;
+    CommandHandler commandHandler;
+    InGameEventHandler eventHandler;
 
     /* Data */
     sptr<ChampDataFactory> champDataFactory;
@@ -24,7 +29,7 @@ public:
     map<int, vector<ChampData>> champPool;
     map<int, sptr<InGamePlayer>> inGamePlayerMap;
     MatchHistory matchHistory;
-    InGameMatchList matchList;
+    InGameMatchPool matchPool;
 
 public:
     GameHost(sptr<ChampDataFactory> p_champDataFactory);
@@ -32,14 +37,11 @@ public:
 
     void EnterClient(sptr<ClientSession> client);
     void PushCommand(sptr<ICommand> command);
+    void PushEvent(sptr<IInGameEvent> event) { eventQueue.push(event); };
     void Update(float deltaTime);
     void InitChampPool(vector<ChampData> champDataVec);
 
 private:
     void SetCurrentState(sptr<IGameState> newState) { currentState = newState; }
-
-private:
-    /* Command Handler */
-    void HandleBuyCommand(sptr<ICommand> command);
-    void HandleSellCommand(sptr<ICommand> command);
+    void ProcessCommand();
 };

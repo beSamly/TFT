@@ -3,10 +3,15 @@
 
 class StatController
 {
+
 private:
-    ChampStatData statData;
+
+private:
+    ChampStatData baseStatData;
+    /*int currentHp;
+    int currentMp;*/
 
 public:
-    StatController(){};
-    void SetBaseStat(ChampStatData p_statData) { statData = p_statData; }
+    StatController() {};
+    void SetBaseStat(ChampStatData p_statData) { baseStatData = p_statData; }
 };

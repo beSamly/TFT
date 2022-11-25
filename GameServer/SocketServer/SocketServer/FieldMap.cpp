@@ -24,6 +24,13 @@ FieldMap::FieldMap() {
     }
 }
 
+void FieldMap::LocateChampion(int fieldUid, sptr<Champion> champion)
+{
+    if (mapData.count(fieldUid)) {
+        mapData[fieldUid]->SetChampion(champion);
+    }
+}
+
 float FieldMap::GetTriangleHeight()
 {
     return (sqrt(3) * edgeLength) / 2;

@@ -5,7 +5,7 @@ Field::Field()
 {
     // field data ¼¼ÆÃ
     int rowCount = 4;
-    int indexCount = 6;
+    int indexCount = 8;
 
     for (int i = 1; i <= rowCount; i++)
     {

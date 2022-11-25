@@ -13,7 +13,6 @@ void DebugController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, i
 
 void DebugController::HandleCreateDebugModeHostRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len)
 {
-
-    sptr<ICommand> command = make_shared<CreateDebugModeHostCommand>(session);
-    gameSystem->PushCommand(command);
+    /*sptr<ICommand> command = make_shared< CreateDebugModeHostCommand>(session);
+    gameSystem->PushCommand(command);*/
 }

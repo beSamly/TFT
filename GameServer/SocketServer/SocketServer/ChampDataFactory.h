@@ -13,6 +13,8 @@ struct ChampData
 struct ChampStatData
 {
     int star;
+    int maxHp;
+    int maxMp;
     int attackDamage;
     int abilityPower;
     int armor;
@@ -28,7 +30,7 @@ private:
     map<int, vector<ChampStatData>> champStatDataMap;
 
 public:
-    ChampDataFactory(){};
+    ChampDataFactory() {};
     void LoadJsonData();
     vector<ChampData> GetChampData();
     ChampStatData GetStatData(int champIndex, int star);
