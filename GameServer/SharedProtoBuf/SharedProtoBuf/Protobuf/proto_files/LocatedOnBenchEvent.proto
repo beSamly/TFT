@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package Protocol;
+
+message LocatedOnBench {
+  int championUid = 1;
+  int benchIndex = 2;
+}
