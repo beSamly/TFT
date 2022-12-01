@@ -23,26 +23,11 @@
     <Filter Include="Source Files\GameSystem\Guardian">
       <UniqueIdentifier>{162a5451-1530-4143-afe7-d1bf3b9504cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameSystem\GameObject">
-      <UniqueIdentifier>{81ce51be-9ab3-4434-90ea-4a8dc91dcf1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameSystem\GameObject\Entity">
-      <UniqueIdentifier>{e60ab7d0-43e8-434d-9a3b-6d997ec4d007}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameSystem\GameObject\Operation">
-      <UniqueIdentifier>{ec49f76b-5995-49e4-9dfc-24dff88597a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameSystem\GameObject\Skill">
-      <UniqueIdentifier>{058034eb-c717-41b5-8a49-26d1ad44a274}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameSystem\Factory">
       <UniqueIdentifier>{caa024b8-200b-44dd-803d-89c531038572}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\GameSystem\json">
       <UniqueIdentifier>{da246980-ac7c-4499-a77f-6e1a6147b08b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameSystem\GameObject\Type">
-      <UniqueIdentifier>{76eee370-487b-4cdd-942d-52be62cc67ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\GameSystem\Factory\Operation">
       <UniqueIdentifier>{afccea7a-31d9-4894-ad01-44b0d1c2fbcc}</UniqueIdentifier>
@@ -91,6 +76,27 @@
     </Filter>
     <Filter Include="Source Files\GameSystem\InGameEvent">
       <UniqueIdentifier>{225da4dc-6a1c-4988-8543-f6110809f64e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame\GameObject">
+      <UniqueIdentifier>{81ce51be-9ab3-4434-90ea-4a8dc91dcf1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame\GameObject\Entity">
+      <UniqueIdentifier>{e60ab7d0-43e8-434d-9a3b-6d997ec4d007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame\GameObject\Operation">
+      <UniqueIdentifier>{ec49f76b-5995-49e4-9dfc-24dff88597a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame\GameObject\Skill">
+      <UniqueIdentifier>{058034eb-c717-41b5-8a49-26d1ad44a274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\InGame\GameObject\Type">
+      <UniqueIdentifier>{76eee370-487b-4cdd-942d-52be62cc67ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Modifier">
+      <UniqueIdentifier>{9ed5cdff-99ce-4a2d-a73e-1dfff32d1432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameSystem\Operation">
+      <UniqueIdentifier>{282c6250-b9b5-4aae-80ae-fbf22f7f5d35}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +149,7 @@
       <Filter>Source Files\GameSystem\Guardian</Filter>
     </ClCompile>
     <ClCompile Include="SkillData.cpp">
-      <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Skill</Filter>
     </ClCompile>
     <ClCompile Include="SkillDataFactory.cpp">
       <Filter>Source Files\GameSystem\Factory</Filter>
@@ -153,12 +159,6 @@
     </ClCompile>
     <ClCompile Include="OperationFactory.cpp">
       <Filter>Source Files\GameSystem\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicalDamage.cpp">
-      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
-    </ClCompile>
-    <ClCompile Include="IOperation.cpp">
-      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
     </ClCompile>
     <ClCompile Include="ITriggerCondition.cpp">
       <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
@@ -277,6 +277,24 @@
     <ClCompile Include="PendingMatch.cpp">
       <Filter>Source Files\MatchSystem</Filter>
     </ClCompile>
+    <ClCompile Include="SkillController.cpp">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationController.cpp">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="StateController.cpp">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="StatModifier.cpp">
+      <Filter>Source Files\GameSystem\Modifier</Filter>
+    </ClCompile>
+    <ClCompile Include="IOperation.cpp">
+      <Filter>Source Files\GameSystem\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalDamage.cpp">
+      <Filter>Source Files\GameSystem\Operation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -325,38 +343,32 @@
       <Filter>Source Files\GameSystem\Guardian</Filter>
     </ClInclude>
     <ClInclude Include="SkillData.h">
-      <Filter>Source Files\GameSystem\GameObject\Skill</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Skill</Filter>
     </ClInclude>
     <ClInclude Include="CommonEnum.h">
-      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Type</Filter>
     </ClInclude>
     <ClInclude Include="SkillDataFactory.h">
       <Filter>Source Files\GameSystem\Factory</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="OperationType.h">
-      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Type</Filter>
     </ClInclude>
     <ClInclude Include="TriggerType.h">
-      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Type</Filter>
     </ClInclude>
     <ClInclude Include="StatType.h">
-      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Type</Filter>
     </ClInclude>
     <ClInclude Include="TargetType.h">
-      <Filter>Source Files\GameSystem\GameObject\Type</Filter>
+      <Filter>Source Files\GameSystem\InGame\GameObject\Type</Filter>
     </ClInclude>
     <ClInclude Include="GuardianFactory.h">
       <Filter>Source Files\GameSystem\Factory</Filter>
     </ClInclude>
     <ClInclude Include="OperationFactory.h">
       <Filter>Source Files\GameSystem\Factory</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicalDamage.h">
-      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperation.h">
-      <Filter>Source Files\GameSystem\Factory\Operation</Filter>
     </ClInclude>
     <ClInclude Include="ITriggerCondition.h">
       <Filter>Source Files\GameSystem\Factory\TriggerCondition</Filter>
@@ -476,15 +488,36 @@
     <ClInclude Include="PendingMatch.h">
       <Filter>Source Files\MatchSystem</Filter>
     </ClInclude>
+    <ClInclude Include="SkillController.h">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationController.h">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="StateController.h">
+      <Filter>Source Files\GameSystem\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetFindUtil.h">
+      <Filter>Source Files\GameSystem\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StatModifier.h">
+      <Filter>Source Files\GameSystem\Modifier</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperation.h">
+      <Filter>Source Files\GameSystem\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalDamage.h">
+      <Filter>Source Files\GameSystem\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampRelatedStruct.h">
+      <Filter>Source Files\DataSystem\GameData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SocketServer.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="json1.bin" />
-    <None Include="json\SkillData.json">
-      <Filter>Source Files\GameSystem\json</Filter>
-    </None>
     <None Include="json\OperationData.json">
       <Filter>Source Files\GameSystem\json</Filter>
     </None>
@@ -502,6 +535,12 @@
       <Filter>Source Files\DataSystem\JsonData</Filter>
     </None>
     <None Include="json\ChampStatData.json">
+      <Filter>Source Files\DataSystem\JsonData</Filter>
+    </None>
+    <None Include="json\ChampSkillData.json">
+      <Filter>Source Files\DataSystem\JsonData</Filter>
+    </None>
+    <None Include="json\SkillData.json">
       <Filter>Source Files\DataSystem\JsonData</Filter>
     </None>
   </ItemGroup>

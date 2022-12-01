@@ -1,15 +1,19 @@
 #pragma once
+#include "Champion.h"
 
 class IOperation {
-public:
-	float range;
-	float executeTime;
-	int targetNumber;
-	string opType;
-	string opTargetType;
+
+private:
+    wptr<Champion> owner;
+    wptr<Champion> target;
+    int duration = 0;
 
 public:
-	virtual void OnExecute() {};
-	virtual void OnEnd() {};
-	virtual void OnTick() {};
+    void SetOwner(wptr<Champion> champion) { owner = champion; };
+    void SetTarget(wptr<Champion> champion) { target = champion; };
+
+public:
+    virtual void OnExecute() abstract;
+    virtual void OnEnd() abstract;
+    virtual void OnTick() abstract;
 };

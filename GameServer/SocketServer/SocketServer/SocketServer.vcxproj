@@ -193,6 +193,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatchWaitPlayer.cpp" />
     <ClCompile Include="NetworkSystem.cpp" />
+    <ClCompile Include="OperationController.cpp" />
     <ClCompile Include="OperationFactory.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="PacketId.cpp" />
@@ -214,11 +215,14 @@
     <ClCompile Include="ShopProbability.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillController.cpp" />
     <ClCompile Include="SkillData.cpp" />
     <ClCompile Include="SkillDataFactory.cpp" />
     <ClCompile Include="SocketServer.cpp" />
     <ClCompile Include="StandByState.cpp" />
     <ClCompile Include="StatController.cpp" />
+    <ClCompile Include="StateController.cpp" />
+    <ClCompile Include="StatModifier.cpp" />
     <ClCompile Include="TCNone.cpp" />
     <ClCompile Include="ThreadSystem.cpp" />
     <ClCompile Include="TLS.cpp" />
@@ -231,6 +235,7 @@
     <ClInclude Include="Bench.h" />
     <ClInclude Include="ChampDataFactory.h" />
     <ClInclude Include="Champion.h" />
+    <ClInclude Include="ChampRelatedStruct.h" />
     <ClInclude Include="ChampShop.h" />
     <ClInclude Include="ClientSession.h" />
     <ClInclude Include="Command.h" />
@@ -262,6 +267,7 @@
     <ClInclude Include="Login.h" />
     <ClInclude Include="MatchWaitPlayer.h" />
     <ClInclude Include="NetworkSystem.h" />
+    <ClInclude Include="OperationController.h" />
     <ClInclude Include="OperationFactory.h" />
     <ClInclude Include="OperationType.h" />
     <ClInclude Include="Packet.h" />
@@ -280,12 +286,16 @@
     <ClInclude Include="ShopProbability.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillController.h" />
     <ClInclude Include="SkillData.h" />
     <ClInclude Include="SkillDataFactory.h" />
     <ClInclude Include="SocketServer.h" />
     <ClInclude Include="StandByState.h" />
     <ClInclude Include="StatController.h" />
+    <ClInclude Include="StateController.h" />
+    <ClInclude Include="StatModifier.h" />
     <ClInclude Include="StatType.h" />
+    <ClInclude Include="TargetFindUtil.h" />
     <ClInclude Include="TargetType.h" />
     <ClInclude Include="TCNone.h" />
     <ClInclude Include="ThreadSystem.h" />
@@ -302,6 +312,7 @@
     <None Include=".clang-format" />
     <None Include="json1.bin" />
     <None Include="json\ChampData.json" />
+    <None Include="json\ChampSkillData.json" />
     <None Include="json\ChampStatData.json" />
     <None Include="json\EntityData.json" />
     <None Include="json\GuardianData.json" />

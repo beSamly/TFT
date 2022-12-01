@@ -9,9 +9,11 @@ void ChampDataFactory::LoadJsonData()
 {
     LoadChampData();
     LoadChampStatData();
+    LoadSkillData();
+    LoadChampSkillData();
 }
 
-vector<ChampData> ChampDataFactory::GetChampData() { return champDataVec; }
+vector<ChampData> ChampDataFactory::GetChampPoolData() { return champDataVec; }
 
 ChampStatData ChampDataFactory::GetStatData(int champIndex, int star)
 {
@@ -27,6 +29,11 @@ ChampStatData ChampDataFactory::GetStatData(int champIndex, int star)
             }
         }
     }
+}
+
+sptr<Champion> ChampDataFactory::CreateChampion(int champIndex)
+{
+
 }
 
 void ChampDataFactory::LoadChampData()
@@ -75,5 +82,75 @@ void ChampDataFactory::LoadChampStatData()
         }
 
         champStatDataMap.emplace(champIndex, vec);
+    }
+}
+
+void ChampDataFactory::LoadSkillData()
+{
+    std::ifstream f("./json/SkillData.json");
+
+    json vectorData = json::parse(f);
+    for (auto& d : vectorData)
+    {
+        SkillData data;
+
+        data.skillIndex = d["Index"];
+        data.aniDuration = d["AniDuration"];
+        data.skillType = d["SkillType"];
+
+        json triggerInfo = d["TriggerInfo"];
+        data.triggerInfo.type = triggerInfo["Type"];
+        data.triggerInfo.threshold = triggerInfo["Threshold"];
+        data.triggerInfo.maxTriggerCount = triggerInfo["MaxTriggerCount"];
+
+        json operationList = d["Operations"];
+        for (auto& op : operationList)
+        {
+            // Operation base info
+            Operation temp;
+            temp.type = op["Star"];
+            temp.value = op["Star"];
+            temp.executeTime = op["Star"];
+            temp.duration = op["Star"];
+
+            // Operation target condition
+            OperationTargetCondition tempTargetCondition;
+            json targetCondition = op["TargetCondition"];
+            tempTargetCondition.type = targetCondition["Type"];
+            tempTargetCondition.targetNumber = targetCondition["TargetNumber"];
+            tempTargetCondition.range = targetCondition["Range"];
+
+            temp.condition = tempTargetCondition;
+
+            data.operations.push_back(temp);
+        }
+
+        skillDataMap.emplace(data.skillIndex, data);
+    }
+}
+
+void ChampDataFactory::LoadChampSkillData()
+{
+    std::ifstream f("./json/ChampSkillData.json");
+
+    json vectorData = json::parse(f);
+    for (auto& data : vectorData)
+    {
+        ChampSkillData temp;
+
+        temp.championIndex = data["ChampIndex"];
+
+        json baseAttackSkillIndex = data["BaseAttackSkillIndex"];
+        json skillIndex = data["SkillIndex"];
+
+        for (int skillIndex : baseAttackSkillIndex) {
+            temp.baseAttackSkillIndex.push_back(skillIndex);
+        }
+
+        for (int skillIndex : skillIndex) {
+            temp.skillIndex.push_back(skillIndex);
+        }
+
+        champSkillDataMap.emplace(temp.championIndex, temp);
     }
 }

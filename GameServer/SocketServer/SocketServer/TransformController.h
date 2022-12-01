@@ -10,4 +10,8 @@ private:
 public:
     TransformController() {};
     Vector3 GetPosition();
+    Vector3 GetTargetPosition() { return targetPosition; };
+    void SetTargetPosition(Vector3 p_position) { targetPosition = p_position; };
+    void Update(float deltaTime);
+    bool IsMoving();
 };

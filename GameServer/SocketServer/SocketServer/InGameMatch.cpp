@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "InGameMatch.h"
 #include "Field.h"
+#include "TargetFindUtil.h"
 
 InGameMatch::InGameMatch() {}
 
@@ -29,16 +30,60 @@ void InGameMatch::InitMatch(Field& fieldA, Field& fieldB)
 
 void InGameMatch::Update(float deltaTime)
 {
-    //움직이고 있니? 계속 움직여라
+    for (sptr<Champion>& champ : aChampions) {
+        UpdateChampion(deltaTime, champ, true);
+    }
 
-    // 스킬 사용 가능하니?
-        // 가능하다면 범위에 적 존재하니?
-        // 범위에 적 없다면 움직여
-
-
-    //기본 공격 사용 가능하니?
-        //범위에 적 있니?
-        //범위에 적 없으면 움직여
-
+    for (sptr<Champion>& champ : bChampions) {
+        UpdateChampion(deltaTime, champ, false);
+    }
 }
 
+void InGameMatch::UpdateChampion(float deltaTime, sptr<Champion>& champion, bool isFromA)
+{
+    // 죽었으면 스킵
+    if (champion->state.IsDead()) {
+        return;
+    }
+
+    champion->transform.Update(deltaTime);
+    champion->stat.Update(deltaTime); // expired 된 stat modifier들 제거
+    champion->state.Update(deltaTime); // expired 된 state modifier들 제거
+    champion->skill.Update(deltaTime);
+
+    //상태값에 관계없이 업데이트 해야하는 컨트롤러들 
+    if (champion->skill.IsUsingSkill()) {
+
+    }
+
+    //여전히 이동 중이라면 리턴
+    if (champion->transform.IsMoving()) {
+        return;
+    }
+
+    // 상태불능에 빠져서 스킬을 사용할 수 없다면 리턴
+    if (champion->state.IsActionDisabled()) {
+        return;
+    }
+
+    if (champion->skill.CanUseSkill()) {
+        champion->skill.Update(deltaTime);
+
+        // todo
+        // skillControoler->update(), skillController.GetReadyOperations
+    }
+    else {
+        //이동 중도 아니고 스킬을(평타,스킬모두) 사용할 수도 없다면 가까운 적이 위치하는 곳으로 1칸 이동하자.
+        sptr<Hexagon> currentHexagon = fieldMap.GetHexagonByChampion(champion);
+        // Get close enemy position;
+        Vector3 targetPosition = TargetFindUtil::FindClosestTragetPosition(currentHexagon->GetPosition(), isFromA ? aChampions : bChampions);
+        //Vector3 targetPosition = FindClosestTragetPosition(currentHexagon->GetPosition(), isFromA);
+        wptr<Hexagon> nextNode = currentHexagon->GetEmptyNodeTowardDirection(targetPosition);
+
+        if (sptr<Hexagon> nextHexagon = nextNode.lock()) {
+            currentHexagon->Release();
+            nextHexagon->SetChampion(champion);
+            champion->transform.SetTargetPosition(nextHexagon->GetPosition());
+        }
+    }
+}

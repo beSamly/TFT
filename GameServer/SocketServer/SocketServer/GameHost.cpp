@@ -82,6 +82,11 @@ void GameHost::Update(float deltaTime)
         }
     }
 
+    // 매치에서 발생한 모든 이벤트 처리
+    /*for (sptr<InGameMatch>& match : matchPool.GetMatches() {
+
+    };*/
+
 }
 
 void GameHost::InitChampPool(vector<ChampData> champDataVec)
