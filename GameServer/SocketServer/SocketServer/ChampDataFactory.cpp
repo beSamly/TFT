@@ -31,9 +31,13 @@ ChampStatData ChampDataFactory::GetStatData(int champIndex, int star)
     }
 }
 
-sptr<Champion> ChampDataFactory::CreateChampion(int champIndex)
+sptr<Champion> ChampDataFactory::CreateChampion(int champIndex, int star)
 {
+    ChampStatData statData = GetStatData(champIndex, star);
 
+    // sptr<Champion> 데이터 생성
+    sptr<Champion> champ = make_shared<Champion>();
+    champ->SetBaseStat(statData);
 }
 
 void ChampDataFactory::LoadChampData()

@@ -16,7 +16,7 @@ public:
     void LoadJsonData();
     vector<ChampData> GetChampPoolData();
     ChampStatData GetStatData(int champIndex, int star);
-    sptr<Champion> CreateChampion(int champIndex);
+    sptr<Champion> CreateChampion(int champIndexn, int star);
 
 private:
     void LoadChampData();
