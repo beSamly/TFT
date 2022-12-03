@@ -10,14 +10,14 @@ private:
     int count = 0;
     int maxCount = 0;
     bool isCanceled = false;
-    int maxElapsedTime = 5000;
+    int maxElapsedTime = 100;
     int elapsedTime = 0;
 
 public:
     PendingMatch(int playerPerMatch) : maxCount(playerPerMatch) {};
     void AddPlayer(int playerId, sptr<MatchWaitPlayer> player);
-    void Accept(int playerId);
-    void Cancel(int playerId);
+    void PlayerAccept(int playerId);
+    void PlayerCancel(int playerId);
     vector<int> GetPlayerId();
     map<int, sptr<MatchWaitPlayer>> GetPlayerMap() { return playerMap; };
     bool IsFull() { return count == maxCount; }

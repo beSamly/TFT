@@ -33,11 +33,51 @@ ChampStatData ChampDataFactory::GetStatData(int champIndex, int star)
 
 sptr<Champion> ChampDataFactory::CreateChampion(int champIndex, int star)
 {
-    ChampStatData statData = GetStatData(champIndex, star);
-
-    // sptr<Champion> 데이터 생성
     sptr<Champion> champ = make_shared<Champion>();
+
+    // 스텟 데이터 세팅
+    ChampStatData statData = GetStatData(champIndex, star);
     champ->SetBaseStat(statData);
+
+    // todo 나중에는 star 에 따른 스킬 얻어줘야 할 듯
+    ChampSkillData champSkillData = GetChampSkillData(champIndex);
+
+
+    // 기본 공격 데이터 세팅
+    vector<SkillData> baseAttackSkill;
+    for (int i : champSkillData.baseAttackSkillIndex)
+    {
+        SkillData data = GetSkillData(i);
+        baseAttackSkill.push_back(data);
+    }
+    champ->SetBaseAttackSkill(baseAttackSkill);
+
+    // 스킬 데이터 세팅
+    vector<SkillData> skill;
+    for (int i : champSkillData.skillIndex)
+    {
+        SkillData data = GetSkillData(i);
+        skill.push_back(data);
+    }
+    champ->SetSkills(skill);
+
+    return champ;
+}
+
+ChampSkillData ChampDataFactory::GetChampSkillData(int champIndex)
+{
+    if (champSkillDataMap.find(champIndex) != champSkillDataMap.end())
+    {
+        return champSkillDataMap[champIndex];
+    }
+}
+
+SkillData ChampDataFactory::GetSkillData(int skillIndex)
+{
+    if (skillDataMap.find(skillIndex) != skillDataMap.end())
+    {
+        return skillDataMap[skillIndex];
+    }
 }
 
 void ChampDataFactory::LoadChampData()
@@ -112,10 +152,10 @@ void ChampDataFactory::LoadSkillData()
         {
             // Operation base info
             Operation temp;
-            temp.type = op["Star"];
-            temp.value = op["Star"];
-            temp.executeTime = op["Star"];
-            temp.duration = op["Star"];
+            temp.type = op["Type"];
+            temp.value = op["Value"];
+            temp.executeTime = op["ExecuteTime"];
+            temp.duration = op["Duration"];
 
             // Operation target condition
             OperationTargetCondition tempTargetCondition;
@@ -125,7 +165,6 @@ void ChampDataFactory::LoadSkillData()
             tempTargetCondition.range = targetCondition["Range"];
 
             temp.condition = tempTargetCondition;
-
             data.operations.push_back(temp);
         }
 
@@ -147,11 +186,13 @@ void ChampDataFactory::LoadChampSkillData()
         json baseAttackSkillIndex = data["BaseAttackSkillIndex"];
         json skillIndex = data["SkillIndex"];
 
-        for (int skillIndex : baseAttackSkillIndex) {
+        for (int skillIndex : baseAttackSkillIndex)
+        {
             temp.baseAttackSkillIndex.push_back(skillIndex);
         }
 
-        for (int skillIndex : skillIndex) {
+        for (int skillIndex : skillIndex)
+        {
             temp.skillIndex.push_back(skillIndex);
         }
 

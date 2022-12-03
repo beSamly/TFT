@@ -14,14 +14,16 @@ namespace PacketId
     {
         LOGIN_REQ = 1,
         LOGIN_RES,
+        LOGOUT_REQ,
     };
 
     enum Match : int
     {
-        AI_MATCH_REQ = 1,
-        AI_MATCH_RES,
-        MATCH_REQ,
-        MATCH_RES,
+        MATCH_REQ = 1,
+        MATCH_REQ_RES,
+        PENDING_MATCH_CREATED_SEND,
+        PENDING_MATCH_CANCELED_SEND,
+        MATCH_ACCEPT_REQ
     };
 
     enum InGame : int

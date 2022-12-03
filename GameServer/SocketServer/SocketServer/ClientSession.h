@@ -14,6 +14,8 @@ public:
     ClientSession();
     virtual ~ClientSession();
     function<void(sptr<ClientSession>, BYTE*, int32)> OnRecvCallback;
+    function<void(sptr<ClientSession>)> OnDisconnectCallback;
+    
     sptr<ClientSession> GetClientSessionRef();
 
 private:

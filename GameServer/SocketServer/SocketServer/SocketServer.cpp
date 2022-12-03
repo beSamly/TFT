@@ -42,6 +42,8 @@ SessionRef SocketServer::CreateSession()
 
     session->SetOwner(std::static_pointer_cast<BaseSocketServer>(shared_from_this()));
     session->OnRecvCallback = OnClientRecv;
+    session->OnDisconnectCallback = OnClientDisconnect;
+    
     if (_iocpCore->Register(session) == false)
         return nullptr;
 
@@ -53,6 +55,7 @@ void SocketServer::OnConnected(SessionRef session)
 {
     spdlog::debug("Session connected");
     AddSession(session);
+    OnClientConnect(std::static_pointer_cast<ClientSession>(session));
 }
 
 // Session 에서 ProcessDisconnect() 호출 시에 이벤트 발생

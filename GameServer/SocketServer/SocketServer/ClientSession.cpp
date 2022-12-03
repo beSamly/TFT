@@ -2,10 +2,11 @@
 #include "ClientSession.h"
 #include "PacketHeader.h"
 #include "PacketId.h"
+#include "spdlog/spdlog.h"
 
 ClientSession::ClientSession() {}
 
-ClientSession::~ClientSession() {}
+ClientSession::~ClientSession() { spdlog::debug("[ClientSession] deconstructed"); }
 
 sptr<ClientSession> ClientSession::GetClientSessionRef()
 {
@@ -41,7 +42,7 @@ void ClientSession::OnConnected() {}
 
 void ClientSession::OnDisconnected()
 {
-    // TODO
+    OnDisconnectCallback(this->GetClientSessionRef());
 }
 
 void ClientSession::OnRecvPacket(BYTE* buffer, int32 len)

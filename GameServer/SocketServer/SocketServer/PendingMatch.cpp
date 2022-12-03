@@ -8,13 +8,12 @@ void PendingMatch::AddPlayer(int playerId, sptr<MatchWaitPlayer> player)
     playerMap.emplace(playerId, player);
 }
 
-void PendingMatch::Accept(int playerId)
-{
-
+void PendingMatch::PlayerAccept(int playerId) {
+    acceptStatusMap[playerId] = true;
 }
 
-void PendingMatch::Cancel(int playerId)
-{
+
+void PendingMatch::PlayerCancel(int playerId) {
     isCanceled = true;
 }
 

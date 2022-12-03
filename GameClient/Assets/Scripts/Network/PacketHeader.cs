@@ -8,8 +8,8 @@ namespace Network
 {
     public struct PacketHeader
     {
-        public UInt16 size;
-        public UInt16 prefix;
-        public UInt16 id;
+        public int size;
+        public int prefix;
+        public int id;
     }
 }

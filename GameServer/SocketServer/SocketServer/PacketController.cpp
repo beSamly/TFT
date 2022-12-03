@@ -13,7 +13,8 @@
 
 PacketController::PacketController(sptr<DataSystem> dataSystem, sptr<MatchSystem> matchSystem)
 {
-    controllerMap.emplace((int)PacketId::Prefix::AUTH, make_shared<AuthController>(dataSystem->GetPlayerManager()));
+    controllerMap.emplace((int)PacketId::Prefix::AUTH,
+                          make_shared<AuthController>(dataSystem->GetPlayerManager(), matchSystem));
     controllerMap.emplace((int)PacketId::Prefix::MATCH, make_shared<MatchController>(matchSystem));
     controllerMap.emplace((int)PacketId::Prefix::IN_GAME, make_shared<GameController>());
 }

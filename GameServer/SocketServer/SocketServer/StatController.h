@@ -1,6 +1,6 @@
 #pragma once
-#include "ChampDataFactory.h"
 #include "StatModifier.h"
+#include "ChampRelatedStruct.h"
 
 namespace {
     const int MAX_STAT_TYPE = 8;

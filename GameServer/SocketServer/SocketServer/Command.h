@@ -44,6 +44,7 @@ namespace Command
         {
         public:
             int matchType;
+            int playerId;
 
         public:
             MatchCancelCommand(wptr<ClientSession> p_client) : ICommand(p_client)

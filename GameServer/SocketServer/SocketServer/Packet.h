@@ -5,32 +5,36 @@
 class Packet
 {
 public:
-	Packet(uint16 packetId) { packet_id = packetId; }
+    Packet(int p_prefix, int packetId) : prefix(p_prefix), packet_id(packetId) {}
 
 private:
-	uint16 packet_id;
-	sptr<SendBuffer> send_buffer;
+    int packet_id;
+    int prefix;
+    sptr<SendBuffer> send_buffer;
 
 public:
-	template<typename T>
-	void WriteData(T& pkt) ;
+    template <typename T>
+    void WriteData(T& pkt);
+    void WriteData();
+    int GetSize() { return send_buffer->WriteSize(); }
 
-	sptr<SendBuffer> ToBuffer();
+    sptr<SendBuffer> ToSendBuffer() { return send_buffer; };
+    BYTE* GetByteBuffer() { return send_buffer->GetBuffer(); }
 };
 
-template<typename T>
+template <typename T>
 inline void Packet::WriteData(T& pkt)
 {
-	const uint16 dataSize = static_cast<uint16>(pkt.ByteSizeLong());
-	const uint16 packetSize = dataSize + sizeof(PacketHeader);
+    const int dataSize = static_cast<int>(pkt.ByteSizeLong());
+    const int packetSize = dataSize + sizeof(PacketHeader);
 
-	send_buffer = MakeShared<SendBuffer>(packetSize);
-	PacketHeader* header = reinterpret_cast<PacketHeader*>(send_buffer->Buffer());
+    send_buffer = MakeShared<SendBuffer>(packetSize);
+    PacketHeader* header = reinterpret_cast<PacketHeader*>(send_buffer->Buffer());
 
-	header->size = packetSize;
-	header->id = packet_id;
+    header->size = packetSize;
+    header->prefix = prefix;
+    header->id = packet_id;
 
-	ASSERT_CRASH(pkt.SerializeToArray(&header[1], dataSize));
-	send_buffer->Close(packetSize);
+    ASSERT_CRASH(pkt.SerializeToArray(&header[1], dataSize));
+    send_buffer->Close(packetSize);
 }
-\

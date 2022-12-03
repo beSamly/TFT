@@ -19,6 +19,8 @@ private:
 public:
     SocketServer(NetAddress netAddress, int32 maxSessionCount) : BaseSocketServer(maxSessionCount, netAddress){};
     std::function<void(sptr<ClientSession>, BYTE*, int32)> OnClientRecv;
+    std::function<void(sptr<ClientSession>)> OnClientDisconnect;
+    std::function<void(sptr<ClientSession>)> OnClientConnect;
 
 public:
     bool Start();

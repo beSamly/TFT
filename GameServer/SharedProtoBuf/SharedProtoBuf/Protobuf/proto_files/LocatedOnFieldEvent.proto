@@ -3,6 +3,6 @@ syntax = "proto3";
 package Protocol;
 
 message LocatedOnField {
-  int championUid = 1;
-  int fieldIndex = 2;
+  int32 championUid = 1;
+  int32 fieldIndex = 2;
 }

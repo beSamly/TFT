@@ -10,24 +10,21 @@ namespace Assets
 {
     public class GameSystem : MonoBehaviour
     {
-
-        public NetworkController networkController;
-        private PacketController packetController;
+        public NetworkManager networkManager;
         private ThreadManager threadManager;
 
         private void Awake()
         {
             DontDestroyOnLoad(this);
 
-            networkController = new NetworkController();
-            packetController = new PacketController();
+            networkManager = new NetworkManager();
             threadManager = new ThreadManager();
         }
 
         private void Start()
         {
-            networkController.Init();
-            networkController.SetRecvCallback(OnRecvPacket);
+            networkManager.Init();
+            networkManager.SetRecvCallback(OnRecvPacket);
         }
 
         private void Update()
@@ -45,7 +42,8 @@ namespace Assets
 
             threadManager.ExecuteOnMainThread(() =>
             {
-                packetController.HandlePacket(data);
+                networkManager.HandlePacket(data);
+                //packetController.HandlePacket(data);
             });
         }
     }

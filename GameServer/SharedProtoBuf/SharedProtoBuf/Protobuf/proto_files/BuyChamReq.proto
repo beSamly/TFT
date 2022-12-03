@@ -3,5 +3,5 @@ syntax = "proto3";
 package Protocol;
 
 message BuyChampionReq {
-  int championUid = 1;
+  int32 championUid = 1;
 }

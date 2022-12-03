@@ -11,6 +11,8 @@ int main()
     serverApplication->StartSocketServer();
     serverApplication->StartGameSystem();
     serverApplication->StartMatchSystem();
+    serverApplication->JoinThread();
+
 
     return 0;
 }

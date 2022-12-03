@@ -29,6 +29,13 @@ struct TriggerInfo
     int maxTriggerCount;
 };
 
+struct OperationTargetCondition
+{
+    string type;
+    int range;
+    int targetNumber;
+};
+
 struct Operation
 {
     string type;
@@ -36,13 +43,6 @@ struct Operation
     int executeTime;
     int duration;
     OperationTargetCondition condition;
-};
-
-struct OperationTargetCondition
-{
-    string type;
-    int range;
-    int targetNumber;
 };
 
 struct SkillData

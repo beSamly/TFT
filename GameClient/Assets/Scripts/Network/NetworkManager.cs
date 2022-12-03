@@ -9,15 +9,20 @@ using System.Runtime.InteropServices;
 
 namespace Network
 {
-    public class NetworkController
+    public class NetworkManager
     {
         private Client client = new Client();
-        private PacketController controller = new PacketController();
+        private PacketController packetController = new PacketController();
 
         public void Init()
         {
             client.Init();
             client.ConnectToServer("127.0.0.1", 7777);
+        }
+
+        public void HandlePacket(byte[] data)  
+        {
+            packetController.HandlePacket(data);
         }
 
         public void SetRecvCallback(Action<byte[]> callback)
@@ -40,12 +45,26 @@ namespace Network
             //LoginRequest receivedRequest = parser.ParseFrom(byteData);
         }
 
-        public void SendAiMatchRequest()
+        public void SendMatchRequest()
         {
-            AiMatchRequest req = new AiMatchRequest();
+            MatchRequest req = new MatchRequest();
 
-            Packet packet = new Packet((int)PacketId.Prefix.MATCH, (int)PacketId.Match.AI_MATCH_REQ);
+            Packet packet = new Packet((int)PacketId.Prefix.MATCH, (int)PacketId.Match.MATCH_REQ);
             packet.WriteData(req.ToByteArray());
+            this.client.SendToServer(packet.ToBuffer());
+        }
+
+        public void SendMatchAcceptRequest()
+        {
+            Packet packet = new Packet((int)PacketId.Prefix.MATCH, (int)PacketId.Match.MATCH_ACCEPT_REQ);
+            packet.WriteData();
+            this.client.SendToServer(packet.ToBuffer());
+        }
+
+        public void SendMatchCancelRequest()
+        {
+            Packet packet = new Packet((int)PacketId.Prefix.MATCH, (int)PacketId.Match.MATCH_CANCEL_REQ);
+            packet.WriteData();
             this.client.SendToServer(packet.ToBuffer());
         }
     }

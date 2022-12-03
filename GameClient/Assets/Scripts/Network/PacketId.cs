@@ -23,8 +23,15 @@ namespace Network
 
         enum Match
         {
-            AI_MATCH_REQ = 1,
-            AI_MATCH_RES
+            MATCH_REQ = 1,
+            MATCH_REQ_RES,
+            PENDING_MATCH_CREATED_SEND,
+            PENDING_MATCH_CANCELED,
+            MATCH_ACCEPT_REQ,
+            MATCH_ACCEPT_RES,
+            MATCH_CANCEL_REQ,
+            MATCH_CANCEL_RES,
+            MATCH_CREATED_SEND
         }
     }
 }

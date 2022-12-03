@@ -163,18 +163,18 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Protobuf\AiMatchRequest.pb.cc" />
-    <ClCompile Include="Protobuf\AiMatchResponse.pb.cc" />
     <ClCompile Include="Protobuf\LoginRequest.pb.cc" />
     <ClCompile Include="Protobuf\LoginResponse.pb.cc" />
+    <ClCompile Include="Protobuf\MatchRequest.pb.cc" />
+    <ClCompile Include="Protobuf\MatchRequestResponse.pb.cc" />
     <ClCompile Include="SharedProtoBuf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Protobuf\AiMatchRequest.pb.h" />
-    <ClInclude Include="Protobuf\AiMatchResponse.pb.h" />
     <ClInclude Include="Protobuf\LoginRequest.pb.h" />
     <ClInclude Include="Protobuf\LoginResponse.pb.h" />
+    <ClInclude Include="Protobuf\MatchRequest.pb.h" />
+    <ClInclude Include="Protobuf\MatchRequestResponse.pb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

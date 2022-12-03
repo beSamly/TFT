@@ -2,14 +2,17 @@
 #include "PlayerManager.h"
 #include "Player.h"
 
-void PlayerManager::AddPlayer(sptr<Player> player)
+void PlayerManager::AddPlayer(sptr<ClientSession> client)
 {
     WRITE_LOCK;
-    player->playerId = tempPlayerId;
-    playerMap->emplace(tempPlayerId, player);
+    client->GetPlayer()->playerId = tempPlayerId;
+    clientMap->emplace(tempPlayerId, client);
     tempPlayerId++;
     return;
 }
+
+void PlayerManager::RemovePlayer(int playerId) { clientMap->erase(playerId); }
+
 void PlayerManager::Update()
 {
     /*Vector<PlayerRef> copiedPlayers;

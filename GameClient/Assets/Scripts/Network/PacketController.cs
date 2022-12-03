@@ -12,16 +12,32 @@ namespace Network
 {
     public class PacketController
     {
+        private MatchController matchController;
+        private AuthController authController;
+
+        //private Dictionary<int, Action<byte[]>> packetHandler = new Dictionary<int, Action<byte[]>>();
+        private Dictionary<int, BaseController> controllerDic= new Dictionary<int, BaseController>();
+        private int headerSize = Marshal.SizeOf(typeof(PacketHeader));
         public PacketController()
         {
-            packetHandler.Add((int)PacketId.LOGIN_RES, HandleLoginRes);
-            packetHandler.Add((int)PacketId.AI_MATCH_RES, HandleAiMatchRes);
+            controllerDic.Add((int)PacketId.Prefix.AUTH, new AuthController());
+            controllerDic.Add((int)PacketId.Prefix.MATCH, new MatchController());
+        }
+        public void HandlePacket(byte[] data)
+        {
+            PacketHeader header = GetHeader(data);
+
+            if (controllerDic.ContainsKey(header.prefix))
+            {
+                controllerDic[header.prefix].HandlePacket(data);
+            }
+            else
+            {
+                //log error
+            }
         }
 
-        private Dictionary<int, Action<byte[]>> packetHandler = new Dictionary<int, Action<byte[]>>();
-        private int headerSize = Marshal.SizeOf(typeof(PacketHeader));
-
-        private PacketHeader GetHeader(byte[] data)
+        protected PacketHeader GetHeader(byte[] data)
         {
             if (headerSize > data.Length)
             {
@@ -38,48 +54,5 @@ namespace Network
 
             return header;
         }
-        public void HandlePacket(byte[] data)
-        {
-            PacketHeader header = GetHeader(data);
-
-            if (packetHandler.ContainsKey(header.id))
-            {
-                packetHandler[header.id].Invoke(data);
-            }
-            else
-            {
-                //log error
-            }
-        }
-
-        private void HandleLoginRes(byte[] data)
-        {
-            MessageParser<LoginResponse> parser = LoginResponse.Parser;
-            LoginResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize);
-            if (response.Result == true)
-            {
-                //TODO : move to next lobby
-                SceneManager.LoadScene("Lobby");
-            }
-            else
-            {
-                //error
-            }
-        }
-
-        private void HandleAiMatchRes(byte[] data)
-        {
-            MessageParser<AiMatchResponse> parser = AiMatchResponse.Parser;
-            AiMatchResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize);
-            if (response.Result == true)
-            {
-                SceneManager.LoadScene("Game");
-            }
-        }
-    }
-
-    public class AuthController
-    {
-
     }
 }

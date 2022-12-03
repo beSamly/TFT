@@ -3,13 +3,15 @@
 #include "ChampRelatedStruct.h"
 #include "Champion.h"
 
+class Champion;
+
 class ChampDataFactory
 {
 private:
     vector<ChampData> champDataVec;
     map<int, vector<ChampStatData>> champStatDataMap;
-    map<int, vector<ChampSkillData>> champSkillDataMap;
-    map<int, vector<SkillData>> skillDataMap;
+    map<int, ChampSkillData> champSkillDataMap;
+    map<int, SkillData> skillDataMap;
 
 public:
     ChampDataFactory() {};
@@ -17,6 +19,11 @@ public:
     vector<ChampData> GetChampPoolData();
     ChampStatData GetStatData(int champIndex, int star);
     sptr<Champion> CreateChampion(int champIndexn, int star);
+
+
+private:
+    ChampSkillData GetChampSkillData(int champIndex);
+    SkillData GetSkillData(int skillIndex);
 
 private:
     void LoadChampData();

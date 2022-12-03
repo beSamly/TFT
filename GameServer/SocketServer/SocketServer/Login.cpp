@@ -53,12 +53,12 @@ void PacketHandler::Login::HandlePacket(sptr<ClientSession>& session, BYTE* buff
 
 	
 	// Response º¸³»±â
-	Protocol::LoginResponse response;
-	response.set_result(true);
+	//Protocol::LoginResponse response;
+	//response.set_result(true);
 
-	Packet packet((uint16)PacketId::LOGIN_RES);
-	packet.WriteData<Protocol::LoginResponse>(response);
-	session->Send(packet.ToBuffer());
+	//Packet packet((int)PacketId::LOGIN_RES);
+	//packet.WriteData<Protocol::LoginResponse>(response);
+	//session->Send(packet.ToSendBuffer());
 }
 
 void PacketHandler::Login::HandleFail(sptr<ClientSession>& session, string reason) {

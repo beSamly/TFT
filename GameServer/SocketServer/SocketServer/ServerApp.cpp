@@ -47,19 +47,15 @@ void ServerApp::StartSocketServer()
                 }
             });
     }
-
-    threadSystem->Join();
 }
 
 void ServerApp::StartGameSystem()
 {
     //게임시스템 쓰레드
     threadSystem->Launch([&]() { inGameSystem->Run(); });
-    threadSystem->Join();
 }
 
 void ServerApp::StartMatchSystem()
 {
     threadSystem->Launch([&]() { matchSystem->Run(); });
-    threadSystem->Join();
 }

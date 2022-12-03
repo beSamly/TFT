@@ -14,7 +14,10 @@ public:
 private:
     sptr<SocketServer> socketServer;
     uptr<PacketController> packetController;
+    sptr<DataSystem> dataSystem;
 
 private:
     void OnClientRecv(sptr<ClientSession> client, BYTE* buffer, int len);
+    void OnClientDisconnect(sptr<ClientSession> client);
+    void OnClientConnect(sptr<ClientSession> client);
 };

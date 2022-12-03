@@ -25,6 +25,7 @@ public:
     void StartSocketServer();
     void StartGameSystem();
     void StartMatchSystem();
+    void JoinThread() { threadSystem->Join(); };
 
 private:
 };

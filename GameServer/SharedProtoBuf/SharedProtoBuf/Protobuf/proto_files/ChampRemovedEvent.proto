@@ -3,5 +3,5 @@ syntax = "proto3";
 package Protocol;
 
 message ChampionRemovedEvent {
-  repeated int championUid = 1;
+  repeated int32 championUid = 1;
 }

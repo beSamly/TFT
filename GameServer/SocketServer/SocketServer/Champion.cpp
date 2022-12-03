@@ -8,5 +8,3 @@ void Champion::Update(float deltaTime) {
     //todo 
 
 }
-
-void Champion::SetBaseStat(ChampStatData statData) { stat.SetBaseStat(statData); }

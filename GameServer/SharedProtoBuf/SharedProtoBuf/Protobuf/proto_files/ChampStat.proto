@@ -3,5 +3,5 @@ syntax = "proto3";
 package Protocol;
 
 message ChampStat {
-  int maxHp = 1;
+  int32 maxHp = 1;
 }

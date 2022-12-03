@@ -2,6 +2,6 @@ syntax = "proto3";
 
 package Protocol;
 
-message AiMatchResponse{
+message MatchRequestResponse{
     bool result = 1;
 }

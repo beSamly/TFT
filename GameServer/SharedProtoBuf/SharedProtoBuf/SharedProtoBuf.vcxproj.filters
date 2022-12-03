@@ -25,10 +25,10 @@
     <ClCompile Include="Protobuf\LoginResponse.pb.cc">
       <Filter>Source Files\Protobuf</Filter>
     </ClCompile>
-    <ClCompile Include="Protobuf\AiMatchRequest.pb.cc">
+    <ClCompile Include="Protobuf\MatchRequest.pb.cc">
       <Filter>Source Files\Protobuf</Filter>
     </ClCompile>
-    <ClCompile Include="Protobuf\AiMatchResponse.pb.cc">
+    <ClCompile Include="Protobuf\MatchRequestResponse.pb.cc">
       <Filter>Source Files\Protobuf</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,10 +42,10 @@
     <ClInclude Include="Protobuf\LoginResponse.pb.h">
       <Filter>Source Files\Protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="Protobuf\AiMatchRequest.pb.h">
+    <ClInclude Include="Protobuf\MatchRequest.pb.h">
       <Filter>Source Files\Protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="Protobuf\AiMatchResponse.pb.h">
+    <ClInclude Include="Protobuf\MatchRequestResponse.pb.h">
       <Filter>Source Files\Protobuf</Filter>
     </ClInclude>
   </ItemGroup>

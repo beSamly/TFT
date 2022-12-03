@@ -3,5 +3,5 @@ syntax = "proto3";
 package Protocol;
 
 message GoldUpdateEvent {
-  int gold = 1;
+  int32 gold = 1;
 }

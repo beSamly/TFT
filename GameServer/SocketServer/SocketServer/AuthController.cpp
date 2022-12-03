@@ -8,14 +8,17 @@
 #include "Packet.h"
 #include "Player.h"
 #include "PlayerManager.h"
+#include "Command.h"
 
-AuthController::AuthController(sptr<PlayerManager> p_playerManager)
+AuthController::AuthController(sptr<PlayerManager> p_playerManager, sptr<MatchSystem> p_matchsystem)
 {
+    matchSystem = p_matchsystem;
     playerManager = p_playerManager;
 
-    handlers[(int)PacketId::Auth::LOGIN_REQ] = [&](sptr<ClientSession>& client, BYTE* buffer, int32 len)
-    { this->HandleLoginRequest(client, buffer, len); };
+    handlers[(int)PacketId::Auth::LOGIN_REQ] = TO_LAMBDA(HandleLoginRequest);
+    handlers[(int)PacketId::Auth::LOGOUT_REQ] = TO_LAMBDA(HandleLogoutRequest);
 }
+
 
 void AuthController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len)
 {
@@ -59,14 +62,27 @@ void AuthController::HandleLoginRequest(sptr<ClientSession>& session, BYTE* buff
     // Player 세팅
 
     sptr<Player> player = std::make_shared<Player>();
+    session->SetPlayer(player);
 
-    playerManager->AddPlayer(player);
+    playerManager->AddPlayer(session);
 
     // Response 보내기
     Protocol::LoginResponse response;
     response.set_result(true);
 
-    Packet packet((uint16)PacketId::Auth::LOGIN_RES);
+    Packet packet((int)PacketId::Prefix::AUTH, (int)PacketId::Auth::LOGIN_RES);
     packet.WriteData<Protocol::LoginResponse>(response);
-    session->Send(packet.ToBuffer());
+    session->Send(packet.ToSendBuffer());
+}
+
+void AuthController::HandleLogoutRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len) {
+  
+    // PlayerManager에서 제거
+    int playerId = session->GetPlayer()->playerId;
+    playerManager->RemovePlayer(playerId);
+
+    // TODO 매칭 상태라면 MatchSystem에 MatchCancel 요청
+    sptr<N2M::MatchCancelCommand> command = make_shared<N2M::MatchCancelCommand>(session);
+    command->playerId = playerId;
+    matchSystem->PushCommand(command);
 }

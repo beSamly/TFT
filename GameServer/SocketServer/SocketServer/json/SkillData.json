@@ -1,28 +1,28 @@
 [
-    {
-        "Index": 9999999999, // This is sample
-        "AniDuration": 1500, // 애니메이션 타임
+  {
+    "Index": 1, 
+    "AniDuration": 1500, 
 
-        "SkillType": "FromChampion", // "FromTrait", "FromItem", "FromAgument"
+    "SkillType": "FromChampion", 
 
-        "TriggerInfo": {
-            "Type": "Base", //OnBaseSkill, OnHit, OnSkill
-            "Threshold": 1, //OnBaseSkill을 몇 번 사용해야 발동하는지 등 
-            "MaxTriggerCount": 1 //OnBaseSkill을 몇 번 사용해야 발동하는지 등 
-        },
-        "Operations": [
-            {
-                "Type": "PhysicalDamage", // PhysicalDamageR
-                "Value": 1,
-                "ExecuteTime": 400,
-                "duration": 200, // 버프 디버프 경우
+    "TriggerInfo": {
+      "Type": "Base", 
+      "Threshold": 1, 
+      "MaxTriggerCount": 1 
+    },
+    "Operations": [
+      {
+        "Type": "PhysicalDamage", 
+        "Value": 1,
+        "ExecuteTime": 400,
+        "Duration": 200, 
 
-                "TargetCondition": {
-                    "Type": "EnemyWithinRange",
-                    "Range": 3, //EnemyWithinRange, GuardianWithinRange, EnemyRandom, GuardianRandom
-                    "TargetNumber": 1
-                }
-            }
-        ]
-    }
+        "TargetCondition": {
+          "Type": "EnemyWithinRange",
+          "Range": 3, 
+          "TargetNumber": 1
+        }
+      }
+    ]
+  }
 ]

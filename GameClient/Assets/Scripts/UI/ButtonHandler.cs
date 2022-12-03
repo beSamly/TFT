@@ -10,7 +10,7 @@ public class ButtonHandler : MonoBehaviour
     private GameSystem gameSystem;
 
     [SerializeField]
-    public Text inputField;
+    public Text loginIdInputField;
 
     private void Awake()
     {
@@ -20,12 +20,11 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnClickEnterButton()
     {
-        gameSystem.networkController.SendLoginRequest(inputField.text);
+        gameSystem.networkManager.SendLoginRequest(loginIdInputField.text);
     }
 
-    public void OnClickAiMatch()
+    public void OnClickMatchRequest()
     {
-        gameSystem.networkController.SendAiMatchRequest();
-
+        gameSystem.networkManager.SendMatchRequest();
     }
 }

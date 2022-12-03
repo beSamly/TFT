@@ -15,5 +15,4 @@ public:
 
 private:
     void HandleMatchRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len);
-    void HandleAiMatchRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len);
 };
