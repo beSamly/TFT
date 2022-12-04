@@ -41,6 +41,13 @@ void NetworkSystem::OnClientRecv(sptr<ClientSession> client, BYTE* buffer, int l
 }
 
 void NetworkSystem::OnClientDisconnect(sptr<ClientSession> client) {
+
+    // 로그인 안 한 상태라면 더이상 처리할 필요 없다.
+    if (client->GetPlayer() == nullptr)
+    {
+        return;
+    }
+
     Packet pck((int)PacketId::Prefix::AUTH, (int)PacketId::Auth::LOGOUT_REQ);
     pck.WriteData();
     packetController->HandlePacket(client, pck.GetByteBuffer(), pck.GetSize()); 

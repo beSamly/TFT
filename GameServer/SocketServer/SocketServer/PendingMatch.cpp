@@ -8,12 +8,11 @@ void PendingMatch::AddPlayer(int playerId, sptr<MatchWaitPlayer> player)
     playerMap.emplace(playerId, player);
 }
 
-void PendingMatch::PlayerAccept(int playerId) {
-    acceptStatusMap[playerId] = true;
-}
+void PendingMatch::PlayerAccept(int playerId) { acceptStatusMap[playerId] = true; }
 
-
-void PendingMatch::PlayerCancel(int playerId) {
+void PendingMatch::PlayerCancel(int playerId)
+{
+    acceptStatusMap[playerId] = false;
     isCanceled = true;
 }
 
@@ -21,17 +20,22 @@ vector<int> PendingMatch::GetPlayerId()
 {
     vector<int> playerIds;
 
-    for (const auto& [playerId, isAccepted] : acceptStatusMap) {
+    for (const auto& [playerId, isAccepted] : acceptStatusMap)
+    {
         playerIds.push_back(playerId);
     }
 
     return playerIds;
 }
 
+bool PendingMatch::IsPlayerAccepted(int playerId) { return acceptStatusMap[playerId]; }
+
 bool PendingMatch::IsReady()
 {
-    for (const auto& [playerId, isAccepted] : acceptStatusMap) {
-        if (isAccepted == false) {
+    for (const auto& [playerId, isAccepted] : acceptStatusMap)
+    {
+        if (isAccepted == false)
+        {
             return false;
         }
     }
@@ -45,8 +49,4 @@ int PendingMatch::GetMatchId()
     return 1;
 }
 
-void PendingMatch::Update(float deltaTime)
-{
-    elapsedTime += deltaTime;
-}
-
+void PendingMatch::Update(float deltaTime) { elapsedTime += deltaTime; }

@@ -13,6 +13,7 @@ MatchController::MatchController(sptr<MatchSystem> p_matchSystem)
     matchSystem = p_matchSystem;
 
     handlers[(int)PacketId::Match::MATCH_REQ] = TO_LAMBDA(HandleMatchRequest);
+    handlers[(int)PacketId::Match::MATCH_CANCEL_REQ] = TO_LAMBDA(HandleMatchCancelRequest);
 }
 
 void MatchController::HandlePacket(sptr<ClientSession>& session, BYTE* buffer, int32 len) {
@@ -41,5 +42,18 @@ void MatchController::HandleMatchRequest(sptr<ClientSession>& session, BYTE* buf
 
     // 매칭 시스템에 요청
     sptr<N2M::MatchRequestCommand> command = make_shared<N2M::MatchRequestCommand>(session);
+    matchSystem->PushCommand(command);
+}
+
+void MatchController::HandleMatchCancelRequest(sptr<ClientSession>& session, BYTE* buffer, int32 len)
+{
+    // 유저에게 응답
+    Packet packet((int)PacketId::Prefix::MATCH, (int)PacketId::Match::MATCH_CANCEL_RES);
+    packet.WriteData();
+    session->Send(packet.ToSendBuffer());
+
+    // 매칭 시스템에 요청
+    sptr<N2M::MatchCancelCommand> command = make_shared<N2M::MatchCancelCommand>(session);
+    command->playerId = session->GetPlayer()->playerId;
     matchSystem->PushCommand(command);
 }

@@ -23,7 +23,7 @@ MatchSystem::MatchSystem(sptr<GameSystem> p_gameSystem)
 
 void MatchSystem::Run()
 {
-    DWORD intervalTick = 10000; // 일단 10초에 한 번씩
+    DWORD intervalTick = 3000; // 일단 10초에 한 번씩
     DWORD nextTickTime = GetTickCount() + intervalTick;
     DWORD prevTickTime = GetTickCount();
 
@@ -196,8 +196,21 @@ void MatchSystem::RemovePendingMatch(sptr<PendingMatch>& match)
 {
     for (const auto& [playerId, player] : match->GetPlayerMap())
     {
-        playerMap.emplace(playerId, player);
         playerToPendingMatchMap.erase(playerId);
+
+        if (match->IsPlayerAccepted(playerId))
+        {
+            playerMap.emplace(playerId, player);
+        }
+        else
+        {
+            if (sptr<ClientSession> client = player->client.lock())
+            {
+                Packet packet((int)PacketId::Prefix::MATCH, (int)PacketId::Match::MATCH_CANCEL_RES);
+                packet.WriteData();
+                client->Send(packet.ToSendBuffer());
+            }
+        }
     };
     pendingMatchPool.erase(match->GetMatchId());
 }

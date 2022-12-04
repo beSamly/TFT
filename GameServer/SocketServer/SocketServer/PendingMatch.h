@@ -10,7 +10,7 @@ private:
     int count = 0;
     int maxCount = 0;
     bool isCanceled = false;
-    int maxElapsedTime = 100;
+    int maxElapsedTime = 15;
     int elapsedTime = 0;
 
 public:
@@ -20,6 +20,7 @@ public:
     void PlayerCancel(int playerId);
     vector<int> GetPlayerId();
     map<int, sptr<MatchWaitPlayer>> GetPlayerMap() { return playerMap; };
+    bool IsPlayerAccepted(int playerId);
     bool IsFull() { return count == maxCount; }
     bool IsReady();
     bool IsCanceled() { return isCanceled; };

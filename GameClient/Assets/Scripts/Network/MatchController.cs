@@ -18,7 +18,9 @@ namespace Network
         public MatchController()
         {
             packetHandler.Add((int)PacketId.Match.MATCH_REQ_RES, HandleMatchRequestRes);
+            packetHandler.Add((int)PacketId.Match.MATCH_CANCEL_RES, HandleMatchCancelRes);
             packetHandler.Add((int)PacketId.Match.PENDING_MATCH_CREATED_SEND, HandlePendingMatchCreatedSend);
+            packetHandler.Add((int)PacketId.Match.PENDING_MATCH_CANCELED_SEND, HandlePendingMatchCanceledSend);
             packetHandler.Add((int)PacketId.Match.MATCH_CREATED_SEND, HandleMatchCreatedSend);
         }
 
@@ -40,27 +42,44 @@ namespace Network
         {
             MessageParser<MatchRequestResponse> parser = MatchRequestResponse.Parser;
             MatchRequestResponse response = parser.ParseFrom(data, headerSize, data.Length - headerSize);
-            if (response.Result == true)
+
+            // disable button
+            LobbySceneManager[] list = GameObject.FindObjectsOfType<LobbySceneManager>();
+            LobbySceneManager sceneManager = list[0];
+            if (sceneManager)
             {
-                // disable button
-                LobbySceneManager[] list = GameObject.FindObjectsOfType<LobbySceneManager>();
-                LobbySceneManager sceneManager = list[0];
-                if (sceneManager)
-                {
-                    sceneManager.MatchRequested();
-                };
-            }
+                sceneManager.MatchRequestResponse(response.Result);
+            };
         }
 
         private void HandlePendingMatchCreatedSend(byte[] data)
         {
             // TODO : ACCEPT POP UP
             // disable button
-            LobbySceneManager[] list = GameObject.FindObjectsOfType<LobbySceneManager>();
-            LobbySceneManager sceneManager = list[0];
+            LobbySceneManager sceneManager = GameObject.FindObjectsOfType<LobbySceneManager>()[0];
             if (sceneManager)
             {
                 sceneManager.PendingMatchCreated();
+            };
+        }
+
+        private void HandlePendingMatchCanceledSend(byte[] data)
+        {
+            // TODO : ACCEPT POP UP
+            // disable button
+            LobbySceneManager sceneManager = GameObject.FindObjectsOfType<LobbySceneManager>()[0];
+            if (sceneManager)
+            {
+                sceneManager.PendingMatchCanceled();
+            };
+        }
+
+        private void HandleMatchCancelRes(byte[] data)
+        {
+            LobbySceneManager sceneManager = GameObject.FindObjectsOfType<LobbySceneManager>()[0];
+            if (sceneManager)
+            {
+                sceneManager.MatchCancelRes();
             };
         }
 
