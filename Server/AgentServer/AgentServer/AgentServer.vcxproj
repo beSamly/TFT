@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3A4D8A23-0788-4BF1-873A-8425474C3E09}</ProjectGuid>
+    <RootNamespace>SocketServer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\ServerCoreLibrary\ServerCoreLibrary;$(SolutionDir)..\PhysicsEngine;$(SolutionDir)..\Library\;$(SolutionDir)..\SharedProtobuf\SharedProtobuf\Protobuf;$(SolutionDir)..\SharedProtobuf\Library\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\SharedProtobuf\Library\;$(SolutionDir)..\Library\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\projects\c++projects\ServerCoreLibrary\ServerCoreLibrary;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\projects\c++projects\ServerCoreLibrary\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\ServerCoreLibrary\ServerCoreLibrary;$(SolutionDir)..\PhysicsEngine;$(SolutionDir)..\Library\;$(SolutionDir)..\SharedPacket\SharedPacket\Protobuf;$(SolutionDir)..\Library\nlohmann_library;$(SolutionDir)..\SharedPacket\Library\Include;$(SolutionDir)..\SharedPacket\SharedPacket;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\SharedPacket\Library\;$(SolutionDir)..\Library\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\projects\c++projects\ServerCoreLibrary\ServerCoreLibrary;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\projects\c++projects\ServerCoreLibrary\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>ServerPch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>ServerPch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AuthController.cpp" />
+    <ClCompile Include="Bench.cpp" />
+    <ClCompile Include="ChampDataFactory.cpp" />
+    <ClCompile Include="Champion.cpp" />
+    <ClCompile Include="ChampShop.cpp" />
+    <ClCompile Include="ClientSession.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="DataSystem.cpp" />
+    <ClCompile Include="DebugController.cpp" />
+    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="FieldMap.cpp" />
+    <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="GameStartedState.cpp" />
+    <ClCompile Include="GuardianFactory.cpp" />
+    <ClCompile Include="IController.cpp" />
+    <ClCompile Include="IGameState.cpp" />
+    <ClCompile Include="IInGameEvent.cpp" />
+    <ClCompile Include="InGameEventHandler.cpp" />
+    <ClCompile Include="InGameMatch.cpp" />
+    <ClCompile Include="InGamePlayer.cpp" />
+    <ClCompile Include="ITriggerCondition.cpp" />
+    <ClCompile Include="MatchController.cpp" />
+    <ClCompile Include="MatchHistory.cpp" />
+    <ClCompile Include="InGameMatchPool.cpp" />
+    <ClCompile Include="MatchSystem.cpp" />
+    <ClCompile Include="GameHost.cpp" />
+    <ClCompile Include="GameSystem.cpp" />
+    <ClCompile Include="InputValidator.cpp" />
+    <ClCompile Include="IPacketHandler.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatchWaitPlayer.cpp" />
+    <ClCompile Include="NetworkSystem.cpp" />
+    <ClCompile Include="OperationController.cpp" />
+    <ClCompile Include="OperationFactory.cpp" />
+    <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="PacketController.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="IOperation.cpp" />
+    <ClCompile Include="PendingMatch.cpp" />
+    <ClCompile Include="PhysicalDamage.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="RoundStartedState.cpp" />
+    <ClCompile Include="ServerApp.cpp" />
+    <ClCompile Include="SharedMutexGuard.cpp" />
+    <ClCompile Include="ShopProbability.cpp" />
+    <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillController.cpp" />
+    <ClCompile Include="SkillData.cpp" />
+    <ClCompile Include="SkillDataFactory.cpp" />
+    <ClCompile Include="SocketServer.cpp" />
+    <ClCompile Include="StandByState.cpp" />
+    <ClCompile Include="StatController.cpp" />
+    <ClCompile Include="StateController.cpp" />
+    <ClCompile Include="StatModifier.cpp" />
+    <ClCompile Include="TCNone.cpp" />
+    <ClCompile Include="ThreadSystem.cpp" />
+    <ClCompile Include="TLS.cpp" />
+    <ClCompile Include="TransformController.cpp" />
+    <ClCompile Include="TriggerConditionFactory.cpp" />
+    <ClCompile Include="Vector3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AuthController.h" />
+    <ClInclude Include="Bench.h" />
+    <ClInclude Include="ChampDataFactory.h" />
+    <ClInclude Include="Champion.h" />
+    <ClInclude Include="ChampRelatedStruct.h" />
+    <ClInclude Include="ChampShop.h" />
+    <ClInclude Include="ClientSession.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="CommonEnum.h" />
+    <ClInclude Include="DataSystem.h" />
+    <ClInclude Include="DebugController.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FieldMap.h" />
+    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameStartedState.h" />
+    <ClInclude Include="GuardianFactory.h" />
+    <ClInclude Include="IController.h" />
+    <ClInclude Include="IGameState.h" />
+    <ClInclude Include="IInGameEvent.h" />
+    <ClInclude Include="InGameEventHandler.h" />
+    <ClInclude Include="InGameMatch.h" />
+    <ClInclude Include="InGamePlayer.h" />
+    <ClInclude Include="ITriggerCondition.h" />
+    <ClInclude Include="LibraryHeader.h" />
+    <ClInclude Include="MatchController.h" />
+    <ClInclude Include="MatchHistory.h" />
+    <ClInclude Include="InGameMatchPool.h" />
+    <ClInclude Include="MatchSystem.h" />
+    <ClInclude Include="GameHost.h" />
+    <ClInclude Include="GameSystem.h" />
+    <ClInclude Include="InputValidator.h" />
+    <ClInclude Include="IPacketHandler.h" />
+    <ClInclude Include="Login.h" />
+    <ClInclude Include="MatchWaitPlayer.h" />
+    <ClInclude Include="NetworkSystem.h" />
+    <ClInclude Include="OperationController.h" />
+    <ClInclude Include="OperationFactory.h" />
+    <ClInclude Include="OperationType.h" />
+    <ClInclude Include="Packet.h" />
+    <ClInclude Include="PacketController.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="IOperation.h" />
+    <ClInclude Include="PendingMatch.h" />
+    <ClInclude Include="PhysicalDamage.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RoundStartedState.h" />
+    <ClInclude Include="ServerApp.h" />
+    <ClInclude Include="SharedMutexGuard.h" />
+    <ClInclude Include="ShopProbability.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillController.h" />
+    <ClInclude Include="SkillData.h" />
+    <ClInclude Include="SkillDataFactory.h" />
+    <ClInclude Include="SocketServer.h" />
+    <ClInclude Include="StandByState.h" />
+    <ClInclude Include="StatController.h" />
+    <ClInclude Include="StateController.h" />
+    <ClInclude Include="StatModifier.h" />
+    <ClInclude Include="StatType.h" />
+    <ClInclude Include="TargetFindUtil.h" />
+    <ClInclude Include="TargetType.h" />
+    <ClInclude Include="TCNone.h" />
+    <ClInclude Include="ThreadSystem.h" />
+    <ClInclude Include="TLS.h" />
+    <ClInclude Include="TransformController.h" />
+    <ClInclude Include="TriggerConditionFactory.h" />
+    <ClInclude Include="TriggerType.h" />
+    <ClInclude Include="Vector3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SocketServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format" />
+    <None Include="json1.bin" />
+    <None Include="json\ChampData.json" />
+    <None Include="json\ChampSkillData.json" />
+    <None Include="json\ChampStatData.json" />
+    <None Include="json\EntityData.json" />
+    <None Include="json\GuardianData.json" />
+    <None Include="json\OperationData.json" />
+    <None Include="json\SkillData.json" />
+    <None Include="json\StatData.json" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
