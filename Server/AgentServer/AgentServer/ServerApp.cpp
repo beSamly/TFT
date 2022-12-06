@@ -4,7 +4,6 @@
 #include "spdlog/spdlog.h"
 #include "PacketHeader.h"
 #include "TLS.h"
-#include "MatchSystem.h"
 
 int MAX_WORKER_THREAD = 10;
 int NETWORK_TIME_OUT_MS = 1000;
@@ -13,10 +12,8 @@ int WORKER_TICK = 64;
 ServerApp::ServerApp()
 {
     threadSystem = make_shared<ThreadSystem>();
-    dataSystem = make_shared<DataSystem>();
-    inGameSystem = make_shared<GameSystem>(dataSystem);
-    matchSystem = make_shared<MatchSystem>(inGameSystem);
-    networkSystem = make_shared<NetworkSystem>(dataSystem, matchSystem);
+
+    networkSystem = make_shared<NetworkSystem>();
 }
 
 void ServerApp::StartSocketServer()
@@ -49,13 +46,3 @@ void ServerApp::StartSocketServer()
     }
 }
 
-void ServerApp::StartGameSystem()
-{
-    //게임시스템 쓰레드
-    threadSystem->Launch([&]() { inGameSystem->Run(); });
-}
-
-void ServerApp::StartMatchSystem()
-{
-    threadSystem->Launch([&]() { matchSystem->Run(); });
-}

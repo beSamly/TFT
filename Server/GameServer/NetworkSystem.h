@@ -6,7 +6,7 @@
 class NetworkSystem
 {
 public:
-	NetworkSystem();
+	NetworkSystem(sptr<DataSystem> p_dataSystem);
 	void StartSocketServer();
 	void HandleIocpEvent(int NETWORK_TIME_OUT_MS);
 	void RunIoContext();
@@ -15,6 +15,7 @@ private:
 	sptr<SocketServer> socketServer;
 	uptr<PacketController> packetController;
 	sptr<asio::io_context> context;
+	sptr<DataSystem> dataSystem;
 
 
 private:

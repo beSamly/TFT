@@ -45,6 +45,7 @@ int ClientSession::OnRecv(BYTE* buffer, int len)
 
 void ClientSession::OnConnect()
 {
+	OnConnectCallback(this->GetClientSessionRef());
 }
 
 void ClientSession::OnDisconnect()

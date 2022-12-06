@@ -16,7 +16,7 @@ NetworkSystem::NetworkSystem(sptr<DataSystem> p_dataSystem) : dataSystem(p_dataS
 {
 	context = make_shared<asio::io_context>();
 	socketServer = make_shared<SocketServer>(context, PORT);
-	//packetController = make_unique<PacketController>(dataSystem, matchSystem);
+	packetController = make_unique<PacketController>(dataSystem);
 }
 
 void NetworkSystem::StartSocketServer()

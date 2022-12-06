@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "NetworkSystem.h"
-#include "DataSystem.h"
 #include "spdlog/spdlog.h"
 #include "PacketController.h"
 #include "PacketId.h"
@@ -8,14 +7,14 @@
 
 namespace
 {
-int32 PORT = 7777;
-int32 MAX_SESSION_COUNT = 100;
+    int32 PORT = 7777;
+    int32 MAX_SESSION_COUNT = 100;
 } // namespace
 
-NetworkSystem::NetworkSystem(sptr<DataSystem> p_dataSystem, sptr<MatchSystem> matchSystem) : dataSystem(p_dataSystem)
+NetworkSystem::NetworkSystem()
 {
     socketServer = make_shared<SocketServer>(NetAddress(L"127.0.0.1", PORT), MAX_SESSION_COUNT);
-    packetController = make_unique<PacketController>(dataSystem, matchSystem);
+    packetController = make_unique<PacketController>();
 }
 
 void NetworkSystem::StartSocketServer()
@@ -24,7 +23,7 @@ void NetworkSystem::StartSocketServer()
     packetController->Init();
 
     // 소켓 서버 실행
-    socketServer->OnClientRecv = [&](sptr<ClientSession> client, BYTE* buffer, int len){ OnClientRecv(client, buffer, len); };
+    socketServer->OnClientRecv = [&](sptr<ClientSession> client, BYTE* buffer, int len) { OnClientRecv(client, buffer, len); };
     socketServer->OnClientDisconnect = [&](sptr<ClientSession> client) { OnClientDisconnect(client); };
     socketServer->OnClientConnect = [&](sptr<ClientSession> client) { OnClientConnect(client); };
     socketServer->Start();
@@ -50,10 +49,10 @@ void NetworkSystem::OnClientDisconnect(sptr<ClientSession> client) {
 
     Packet pck((int)PacketId::Prefix::AUTH, (int)PacketId::Auth::LOGOUT_REQ);
     pck.WriteData();
-    packetController->HandlePacket(client, pck.GetByteBuffer(), pck.GetSize()); 
+    packetController->HandlePacket(client, pck.GetByteBuffer(), pck.GetSize());
 }
 
 void NetworkSystem::OnClientConnect(sptr<ClientSession> client)
 {
-    
+
 }

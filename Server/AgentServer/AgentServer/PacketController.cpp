@@ -7,16 +7,13 @@
 #include "MatchController.h"
 #include "AuthController.h"
 #include "PlayerManager.h"
-#include "GameController.h"
-#include "DataSystem.h"
-#include "MatchSystem.h"
 
-PacketController::PacketController(sptr<DataSystem> dataSystem, sptr<MatchSystem> matchSystem)
+PacketController::PacketController()
 {
-    controllerMap.emplace((int)PacketId::Prefix::AUTH,
+    /*controllerMap.emplace((int)PacketId::Prefix::AUTH,
                           make_shared<AuthController>(dataSystem->GetPlayerManager(), matchSystem));
     controllerMap.emplace((int)PacketId::Prefix::MATCH, make_shared<MatchController>(matchSystem));
-    controllerMap.emplace((int)PacketId::Prefix::IN_GAME, make_shared<GameController>());
+    controllerMap.emplace((int)PacketId::Prefix::IN_GAME, make_shared<GameController>());*/
 }
 
 PacketController::~PacketController() {}

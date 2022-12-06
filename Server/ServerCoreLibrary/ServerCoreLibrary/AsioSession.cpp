@@ -10,9 +10,9 @@
 #include <asio/ts/buffer.hpp>
 #include <asio/ts/internet.hpp>
 #include <asio/io_context.hpp>
+#include "asio.hpp"
 
-
-AsioSession::AsioSession(shared_ptr<asio::io_context> context) : socket(*context), recvBuffer(MAX_LENGTH) {	}
+AsioSession::AsioSession(shared_ptr<asio::io_context> context) : socket(*context), resolver(*context), recvBuffer(MAX_LENGTH) {	}
 
 AsioSession::~AsioSession()
 {
@@ -70,5 +70,18 @@ void AsioSession::Send(shared_ptr<SendBuffer> sendBuffer)
 			else {
 				OnDisconnect();
 			}
+		});
+}
+
+void AsioSession::Connect()
+{
+	asio::ip::tcp::endpoint ep(asio::ip::address::from_string("127.0.01"), 7777);
+	socket.async_connect(ep, [this](const asio::error_code& ec) {
+		if (!ec) {
+			OnConnect();
+		}
+		else {
+			std::cout << "connecting error : " << ec << std::endl;
+		}
 		});
 }

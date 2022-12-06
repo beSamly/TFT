@@ -7,12 +7,10 @@
 #include "Packet.h"
 #include "Player.h"
 #include "PlayerManager.h"
-#include "Command.h"
 #include "PacketId.h"
 
-AuthController::AuthController(sptr<PlayerManager> p_playerManager, sptr<MatchSystem> p_matchsystem)
+AuthController::AuthController(sptr<PlayerManager> p_playerManager)
 {
-    matchSystem = p_matchsystem;
     playerManager = p_playerManager;
 
     handlers[(int)PacketId::Auth::LOGIN_REQ] = TO_LAMBDA(HandleLoginRequest);
@@ -82,7 +80,7 @@ void AuthController::HandleLogoutRequest(sptr<ClientSession>& session, BYTE* buf
     playerManager->RemovePlayer(playerId);
 
     // TODO 매칭 상태라면 MatchSystem에 MatchCancel 요청
-    sptr<N2M::MatchCancelCommand> command = make_shared<N2M::MatchCancelCommand>(session);
+    /*sptr<N2M::MatchCancelCommand> command = make_shared<N2M::MatchCancelCommand>(session);
     command->playerId = playerId;
-    matchSystem->PushCommand(command);
+    matchSystem->PushCommand(command);*/
 }

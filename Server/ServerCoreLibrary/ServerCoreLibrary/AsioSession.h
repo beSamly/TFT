@@ -15,10 +15,13 @@ public:
 	AsioSession(shared_ptr<asio::io_context> context);
 	virtual ~AsioSession();
 	tcp::socket socket;
+	tcp::resolver resolver;
+
 
 public:
 	void Start() { DoRead(); }
 	void Send(shared_ptr<SendBuffer> sendBuffer);
+	void Connect();
 
 private:
 	void DoRead();
