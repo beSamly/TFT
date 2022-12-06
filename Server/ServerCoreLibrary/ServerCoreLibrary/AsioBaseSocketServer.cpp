@@ -40,7 +40,6 @@ void AsioBaseSocketServer::DoAccept()
 		{
 			if (!ec)
 			{
-
 				OnAccept(session);
 				session->Start();
 			}
@@ -49,8 +48,3 @@ void AsioBaseSocketServer::DoAccept()
 		});
 }
 
-
-void AsioBaseSocketServer::RunOnThread()
-{
-	//ioContext.run();
-}

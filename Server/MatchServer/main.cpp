@@ -4,11 +4,10 @@
 
 int main() {
 
-
 	uptr<ServerApp> serverApplication = make_unique<ServerApp>();
 
 	serverApplication->StartSocketServer();
-	serverApplication->StartGameSystem();
+	serverApplication->StartMatchSystem();
 	serverApplication->JoinThread();
 
 	return 0;

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "NetworkSystem.h"
-#include "DataSystem.h"
 #include "spdlog/spdlog.h"
 #include "PacketController.h"
 #include "PacketId.h"
@@ -12,11 +11,11 @@ namespace
 	int32 MAX_SESSION_COUNT = 100;
 } // namespace
 
-NetworkSystem::NetworkSystem(sptr<DataSystem> p_dataSystem) : dataSystem(p_dataSystem)
+NetworkSystem::NetworkSystem(sptr<MatchSystem> matchSystem)
 {
 	context = make_shared<asio::io_context>();
 	socketServer = make_shared<SocketServer>(context, PORT);
-	//packetController = make_unique<PacketController>(dataSystem, matchSystem);
+	packetController = make_unique<PacketController>(matchSystem);
 }
 
 void NetworkSystem::StartSocketServer()
@@ -32,14 +31,10 @@ void NetworkSystem::StartSocketServer()
 	spdlog::info("Server listening on {}", PORT);
 }
 
-void NetworkSystem::HandleIocpEvent(int NETWORK_TIME_OUT_MS) {
-	//socketServer->GetIocpCore()->HandleIocpEvent(NETWORK_TIME_OUT_MS);
-}
-
-void NetworkSystem::RunIoContext()
-{
+void NetworkSystem::RunIoContext() {
 	socketServer->RunIoContext();
 }
+
 
 void NetworkSystem::OnClientRecv(sptr<ClientSession> client, BYTE* buffer, int len)
 {

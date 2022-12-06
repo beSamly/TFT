@@ -1,14 +1,13 @@
 #pragma once
-#include "DataSystem.h"
+#include "MatchSystem.h"
 #include "PacketController.h"
 #include "SocketServer.h"
 
 class NetworkSystem
 {
 public:
-	NetworkSystem();
+	NetworkSystem(sptr<MatchSystem> matchSystem);
 	void StartSocketServer();
-	void HandleIocpEvent(int NETWORK_TIME_OUT_MS);
 	void RunIoContext();
 
 private:

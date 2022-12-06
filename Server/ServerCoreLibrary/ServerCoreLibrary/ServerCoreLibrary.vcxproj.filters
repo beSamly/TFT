@@ -67,6 +67,9 @@
     <ClCompile Include="AsioBaseSocketServer.cpp">
       <Filter>Source Files\AsioNetwork</Filter>
     </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GlobalMacro.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="AsioBaseSocketServer.h">
       <Filter>Source Files\AsioNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Source Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

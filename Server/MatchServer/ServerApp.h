@@ -1,20 +1,13 @@
 #pragma once
-#include "GameSystem.h"
-#include "PacketController.h"
-#include "SendBuffer.h"
-#include "SocketServer.h"
+#include "pch.h"
 #include "ThreadSystem.h"
-#include "PlayerManager.h"
-#include "DataSystem.h"
 #include "NetworkSystem.h"
 
 class ServerApp
 {
 public:
 	sptr<ThreadSystem> threadSystem;
-	sptr<GameSystem> gameSystem;
-	//sptr<MatchSystem> matchSystem;
-	sptr<DataSystem> dataSystem;
+	sptr<MatchSystem> matchSystem;
 	sptr<NetworkSystem> networkSystem;
 
 public:
@@ -22,7 +15,7 @@ public:
 
 public:
 	void StartSocketServer();
-	void StartGameSystem();
+	void StartMatchSystem();
 	void JoinThread() { threadSystem->Join(); };
 
 private:

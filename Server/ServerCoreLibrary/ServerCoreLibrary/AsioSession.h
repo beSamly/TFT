@@ -13,21 +13,15 @@ class AsioSession
 {
 public:
 	AsioSession(shared_ptr<asio::io_context> context);
-
 	virtual ~AsioSession();
-
-
 	tcp::socket socket;
 
-
-	void Start()
-	{
-		DoRead();
-	}
+public:
+	void Start() { DoRead(); }
+	void Send(shared_ptr<SendBuffer> sendBuffer);
 
 private:
 	void DoRead();
-	void Send(shared_ptr<SendBuffer> sendBuffer);
 
 private:
 	/* Interface */

@@ -5,8 +5,7 @@
 #include "SendBuffer.h"
 #include "IController.h"
 #include "PlayerManager.h"
-#include "GameSystem.h"
-#include "DataSystem.h"
+#include "MatchSystem.h"
 
 using std::function;
 using std::map;
@@ -17,7 +16,7 @@ private:
 	std::map<int, sptr<IController>> controllerMap;
 
 public:
-	PacketController(sptr<DataSystem> dataSystem);
+	PacketController(sptr<MatchSystem> matchSystem);
 	~PacketController();
 	void Init();
 

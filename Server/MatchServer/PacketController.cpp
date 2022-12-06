@@ -3,11 +3,12 @@
 #include "PacketHeader.h"
 #include "PacketId.h"
 #include "spdlog/spdlog.h"
+#include "MatchController.h"
+//#include "AuthController.h"
 #include "PlayerManager.h"
-#include "GameController.h"
-#include "DataSystem.h"
+#include "MatchSystem.h"
 
-PacketController::PacketController(sptr<DataSystem> dataSystem)
+PacketController::PacketController(sptr<MatchSystem> matchSystem)
 {
 	//controllerMap.emplace((int)PacketId::Prefix::AUTH,
 		//make_shared<AuthController>(dataSystem->GetPlayerManager(), matchSystem));

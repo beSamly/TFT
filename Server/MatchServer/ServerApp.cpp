@@ -1,5 +1,4 @@
 #include "pch.h"
-
 #include "ServerApp.h"
 #include "spdlog/spdlog.h"
 #include "PacketHeader.h"
@@ -12,10 +11,8 @@ int WORKER_TICK = 64;
 ServerApp::ServerApp()
 {
 	threadSystem = make_shared<ThreadSystem>();
-	dataSystem = make_shared<DataSystem>();
-	gameSystem = make_shared<GameSystem>(dataSystem);
-	//matchSystem = make_shared<MatchSystem>(inGameSystem);
-	networkSystem = make_shared<NetworkSystem>(dataSystem);
+	matchSystem = make_shared<MatchSystem>();
+	networkSystem = make_shared<NetworkSystem>(matchSystem);
 }
 
 void ServerApp::StartSocketServer()
@@ -34,7 +31,6 @@ void ServerApp::StartSocketServer()
 				while (true)
 				{
 					//LEndTickCount = ::GetTickCount64() + WORKER_TICK;
-
 					// 네트워크 입출력 및 패킷 핸들러 실행
 					networkSystem->RunIoContext();
 				}
@@ -42,8 +38,8 @@ void ServerApp::StartSocketServer()
 	}
 }
 
-void ServerApp::StartGameSystem()
+void ServerApp::StartMatchSystem()
 {
 	//게임시스템 쓰레드
-	threadSystem->Launch([&]() { gameSystem->Run(); });
+	threadSystem->Launch([&]() { matchSystem->Run(); });
 }
