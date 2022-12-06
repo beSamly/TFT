@@ -36,7 +36,7 @@ void ServerApp::StartSocketServer()
                     //LEndTickCount = ::GetTickCount64() + WORKER_TICK;
 
                     // 네트워크 입출력 및 패킷 핸들러 실행
-                    networkSystem->RunIoContext();
+                    //networkSystem->RunIoContext();
 
                     // Global Queue 의 일감 실행
                     // threadSystem::DoGlobalQueueWork();
