@@ -4,7 +4,7 @@
 #include "PacketId.h"
 #include "spdlog/spdlog.h"
 
-ClientSession::ClientSession() {}
+ClientSession::ClientSession(sptr<asio::io_context> context) : AsioSession(context) {}
 
 ClientSession::~ClientSession() { spdlog::debug("[ClientSession] deconstructed"); }
 
@@ -13,7 +13,7 @@ sptr<ClientSession> ClientSession::GetClientSessionRef()
     return static_pointer_cast<ClientSession>(shared_from_this());
 }
 
-int32 ClientSession::OnRecv(BYTE* buffer, int32 len)
+int ClientSession::OnRecv(BYTE* buffer, int len)
 {
     int32 processLen = 0;
 
@@ -30,32 +30,17 @@ int32 ClientSession::OnRecv(BYTE* buffer, int32 len)
             break;
 
         // 패킷 조립 성공
-        OnRecvPacket(&buffer[processLen], header.size);
-
+        OnRecvCallback(this->GetClientSessionRef(), &buffer[processLen], header.size);
         processLen += header.size;
     }
 
     return processLen;
 }
 
-void ClientSession::OnConnected() {}
+void ClientSession::OnConnect() {}
 
-void ClientSession::OnDisconnected()
-{
-    OnDisconnectCallback(this->GetClientSessionRef());
-}
+void ClientSession::OnDisconnect() { OnDisconnectCallback(this->GetClientSessionRef()); }
 
-void ClientSession::OnRecvPacket(BYTE* buffer, int32 len)
-{
-    // 아래 과정을 server system 에서 하자
-    /*PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
-    auto packetId = header->id;
-    auto session = this->GetClientSessionRef();*/
-    OnRecvCallback(this->GetClientSessionRef(), buffer, len);
-}
+sptr<Player> ClientSession::GetPlayer() { return player; }
 
-void ClientSession::OnSend(int32 len) {}
-
-sptr<Player> ClientSession::GetPlayer() { return _player; }
-
-void ClientSession::SetPlayer(sptr<Player> player) { _player = player; }
+void ClientSession::SetPlayer(sptr<Player> p_player) { player = p_player; }

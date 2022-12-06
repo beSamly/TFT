@@ -1,36 +1,27 @@
 #pragma once
 #include <functional>
-#include "BaseSocketServer.h"
 #include "ClientSession.h"
+#include "AsioBaseSocketServer.h"
 
 using SessionFactory = std::function<SessionRef(void)>;
 using std::shared_ptr;
 
-class SocketServer : public BaseSocketServer
+class SocketServer : public AsioBaseSocketServer
 {
-public:
-    Set<SessionRef> _sessions;
+    public:
+        SocketServer(sptr<asio::io_context> context, int port);
 
-private:
-    USE_LOCK
-    SessionFactory _sessionFactory;
-    int32 _sessionCount = 0;
+    public:
+        void StartAccept();
+        void OnAccept(sptr<AsioSession> session) override;
+        sptr<AsioSession> CreateSession() override;
+        void RunIoContext();
 
-public:
-    SocketServer(NetAddress netAddress, int32 maxSessionCount) : BaseSocketServer(maxSessionCount, netAddress){};
-    std::function<void(sptr<ClientSession>, BYTE*, int32)> OnClientRecv;
-    std::function<void(sptr<ClientSession>)> OnClientDisconnect;
-    std::function<void(sptr<ClientSession>)> OnClientConnect;
+    protected:
+        sptr<asio::io_context> ioContext;
 
-public:
-    bool Start();
-    void Close();
-    void AddSession(SessionRef session);
-    void ReleaseSession(SessionRef session);
-
-protected:
-    // 인터페이스 구현
-    SessionRef CreateSession() override;
-    void OnConnected(SessionRef session) override;
-    void OnDisconnected(SessionRef session) override;
+    public:
+        std::function<void(sptr<ClientSession>, BYTE*, int32)> OnClientRecv;
+        std::function<void(sptr<ClientSession>)> OnClientDisconnect;
+        std::function<void(sptr<ClientSession>)> OnClientConnect;
 };

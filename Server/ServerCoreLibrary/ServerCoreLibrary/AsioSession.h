@@ -8,8 +8,7 @@ using std::move;
 using asio::ip::tcp;
 using std::shared_ptr;
 
-class AsioSession
-	: public std::enable_shared_from_this<AsioSession>
+class AsioSession: public std::enable_shared_from_this<AsioSession>
 {
 public:
 	AsioSession(shared_ptr<asio::io_context> context);
@@ -21,7 +20,7 @@ public:
 public:
 	void Start() { DoRead(); }
 	void Send(shared_ptr<SendBuffer> sendBuffer);
-	void Connect();
+    void Connect(string address, int port);
 
 private:
 	void DoRead();

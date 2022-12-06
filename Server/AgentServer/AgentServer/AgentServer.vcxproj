@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="AuthController.cpp" />
     <ClCompile Include="ClientSession.cpp" />
+    <ClCompile Include="ClientSessionArch.cpp" />
     <ClCompile Include="DebugController.cpp" />
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="MatchController.cpp" />
@@ -178,16 +179,19 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="ProxyManager.cpp" />
     <ClCompile Include="ServerApp.cpp" />
     <ClCompile Include="SharedMutexGuard.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="SocketServer.cpp" />
+    <ClCompile Include="SocketServerArch.cpp" />
     <ClCompile Include="ThreadSystem.cpp" />
     <ClCompile Include="TLS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthController.h" />
     <ClInclude Include="ClientSession.h" />
+    <ClInclude Include="ClientSessionArch.h" />
     <ClInclude Include="DebugController.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="LibraryHeader.h" />
@@ -199,11 +203,13 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="ProxyManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ServerApp.h" />
     <ClInclude Include="SharedMutexGuard.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SocketServer.h" />
+    <ClInclude Include="SocketServerArch.h" />
     <ClInclude Include="ThreadSystem.h" />
     <ClInclude Include="TLS.h" />
   </ItemGroup>

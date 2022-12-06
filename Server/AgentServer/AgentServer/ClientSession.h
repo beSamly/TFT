@@ -1,41 +1,35 @@
 #pragma once
 #include "pch.h"
-
-#include "Session.h"
 #include "Player.h"
+#include "AsioSession.h"
 
 /*-----------------
         ClientSession
 ------------------*/
 
-class ClientSession : public Session
+class ClientSession : public AsioSession
 {
 public:
-    ClientSession();
+    ClientSession(sptr<asio::io_context> context);
     virtual ~ClientSession();
-    function<void(sptr<ClientSession>, BYTE*, int32)> OnRecvCallback;
-    function<void(sptr<ClientSession>)> OnDisconnectCallback;
-    
     sptr<ClientSession> GetClientSessionRef();
 
 private:
-    sptr<Player> _player;
+    sptr<Player> player;
 
 public:
     sptr<Player> GetPlayer();
     void SetPlayer(sptr<Player> player);
 
+public:
+    /* 네트워크 콜백 */
+    function<void(sptr<ClientSession>, BYTE*, int32)> OnRecvCallback;
+    function<void(sptr<ClientSession>)> OnDisconnectCallback;
+    function<void(sptr<ClientSession>)> OnConnectCallback;
+
 private:
     /* 인터페이스 구현 */
-    virtual void OnConnected() override;
-    virtual void OnDisconnected() override;
-    virtual void OnSend(int32 len) override;
-    virtual int32 OnRecv(BYTE* buffer, int32 len) override;
-
-private:
-    void OnRecvPacket(BYTE* buffer, int32 len);
-
-public:
-    /* 컨텐츠 로직 */
-    // void SendLoginResponse(Protocol::LoginResponse pkt);
+    int OnRecv(BYTE* buffer, int len) override;
+    void OnDisconnect() override;
+    void OnConnect() override;
 };

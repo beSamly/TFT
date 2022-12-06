@@ -29,19 +29,21 @@ void ServerApp::StartSocketServer()
         threadSystem->Launch(
             [&]()
             {
-                while (true)
-                {
-                    LEndTickCount = ::GetTickCount64() + WORKER_TICK;
+                networkSystem->RunIoContext();
+
+                //while (true)
+                //{
+                    //LEndTickCount = ::GetTickCount64() + WORKER_TICK;
 
                     // 네트워크 입출력 및 패킷 핸들러 실행
-                    networkSystem->HandleIocpEvent(NETWORK_TIME_OUT_MS);
+                    networkSystem->RunIoContext();
 
                     // Global Queue 의 일감 실행
                     // threadSystem::DoGlobalQueueWork();
 
                     // JobTimer Queue 의 일감 실행 : 시간 예약 혹은 인터벌 일감
                     // threadSystem::DistributeReservedJobs();
-                }
+                //}
             });
     }
 }
